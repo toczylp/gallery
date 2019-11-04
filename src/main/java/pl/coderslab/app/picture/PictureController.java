@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +19,11 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Controller
+@Secured("ROLE_ADMIN")
 @RequestMapping("/picture")
 public class PictureController {
 
-    private final PictureRepositoryCustom pictureRepositoryCustomImpl;
-    private final PictureRepositoryPageable pictureRepositoryPageable;
+    private final PictureService pictureService;
     private final Map<String, String> ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES = Map.of(
             "JPEG", "ffd8", "PNG", "8950", "BMP", "424d", "TIFF", "4949"
     );
@@ -34,7 +35,7 @@ public class PictureController {
     }
 
     @PostMapping("/add")
-    public String add(@RequestParam("file") MultipartFile file, Model model, @ModelAttribute @Valid Picture picture) {
+    public String add(@RequestParam("file") MultipartFile file, Model model) {
 
 
         String fileName = file.getOriginalFilename();
@@ -43,7 +44,7 @@ public class PictureController {
             if (!pictureValidate(bytePic[0], bytePic[1])) {
                 throw new NotCorrectFileUploadException();
             }
-            pictureRepositoryCustomImpl.save(fileName, bytePic);
+            pictureService.save(fileName, bytePic);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NotCorrectFileUploadException e) {
@@ -58,7 +59,7 @@ public class PictureController {
     @RequestMapping(value = "/read/{id}")
     public String readPicture(@PathVariable Long id, Model model) {
 
-        Picture picture = pictureRepositoryCustomImpl.findById(id);
+        Picture picture = pictureService.findById(id);
         model.addAttribute("pic", picture.getEncodedPic());
         return "display_picture";
     }
@@ -66,12 +67,9 @@ public class PictureController {
     @RequestMapping(value = "/read/all/page/{page}")
     public String readAllPictures(Model model, @PathVariable("page") int page) {
 
-        Page<Picture> pictures = pictureRepositoryPageable.findAll(new PageRequest(page - 1, 6));
-        List<Picture> encodedPictures = pictures.stream().map(p -> {
-            Picture picture = new Picture(p.getId(), p.getFileName(), p.getCreated(), p.encodePic());
-            return picture;
-        }).collect(Collectors.toList());
-        model.addAttribute("pages",pictures.getTotalPages());
+        List<Picture> encodedPictures = pictureService.findAllPaginable(page);
+
+        model.addAttribute("pages", pictureService.totalPagesNo(page));
         model.addAttribute("pictures", encodedPictures);
         model.addAttribute("currentPage", page);
         return "display_picture";

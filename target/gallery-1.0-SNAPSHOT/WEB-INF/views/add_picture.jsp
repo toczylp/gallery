@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     <title>Title</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
         <div class="card-body">
             <div class="form-group">
 
-                <form method="post" enctype="multipart/form-data">
+                <form action="/picture/add" method="post" enctype="multipart/form-data">
                     <p>Select image:</p><br>
                     <input type="file" name="file" path="pic"/><br>
                     <input type="submit" class="btn btn-primary btn-lg" value="Upload"/>
@@ -31,6 +32,7 @@
                                 </c:forEach>
                         </div>
                     </c:if>
+                   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </form>
             </div>
         </div>

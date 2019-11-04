@@ -31,13 +31,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/signup", "/", "/picture/read/all/**", "/picture/add").permitAll()
+                .antMatchers("/signup", "/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll().usernameParameter("login").successForwardUrl("/loggedin")
                 .and();
-        //.csrf().disable();
+                //.csrf().disable();
     }
 
     @Bean
