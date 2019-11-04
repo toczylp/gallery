@@ -25,7 +25,17 @@ public class Picture {
     @Transient
     private String encodedPic;
 
-    public String getEncodedPic() {
+    public Picture() {
+    }
+
+    public Picture(Long id, String fileName, LocalDate created, String encodedPic) {
+        this.id = id;
+        this.fileName = fileName;
+        this.created = created;
+        this.encodedPic = encodedPic;
+    }
+
+    public String encodePic() {
         return new String(Base64.encode(this.pic));
     }
 

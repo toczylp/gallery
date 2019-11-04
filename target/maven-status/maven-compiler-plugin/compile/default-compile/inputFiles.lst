@@ -1,11 +1,11 @@
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/Main1.java
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/picture/PictureService.java
+/home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/picture/PictureRepositoryPageable.java
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/configuration/AppConfig.java
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/user/UserController.java
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/picture/NotCorrectFileUploadException.java
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/user/User.java
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/HomeController.java
-/home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/picture/PictureRepository.java
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/user/UserRepository.java
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustomImpl.java
 /home/piotr/IdeaProjects/gallery/src/main/java/pl/coderslab/app/picture/Picture.java

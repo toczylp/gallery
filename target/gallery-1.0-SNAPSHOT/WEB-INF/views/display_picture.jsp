@@ -14,46 +14,77 @@
 <body>
 <jsp:include page="common/header.jsp"/>
 <div class="container">
-    <h4>Add an image</h4>
-
-    <div class="card">
-        <img src="data:image/jpeg;base64,${pic}" alt="DUPA"/>
-    </div>
     <c:if test="${pictures != null}">
-    <div class="container">
-        <c:forEach items="${pictures}" var="el" varStatus="status">
-            <h1>${status.index}</h1>
-            <img src="data:image/jpeg;base64,${el}" alt="DUPA" width="480" height="640"/>
-        </c:forEach>
+        <div class="container">
+            <c:forEach items="${pictures}" var="el" varStatus="status">
+                <c:if test="${status.index % 3 == 0}">
+                    <div class="row">
+                </c:if>
+                <div class="col-sm-4">
+                    <h1>${el.getFileName()}</h1>
+                    <img src="data:image/jpeg;base64,${el.getEncodedPic()}" alt="DUPA" width="100%" height="auto"/>
+                </div>
+                <c:if test="${status.index % 3 == 2 ||  status.last}">
+                    </div>
+                    <div class="row">
+                        <c:if test="${status.index < 3}">
+                        <c:forEach var="i" begin="0" end="${status.index}" varStatus="status2" step="1">
+                            <div class="col-sm-4 panel panel-info">
+                                <div class="panel-heading">Panel with panel-info class</div>
+                                    <div class="panel-body">
+                                        <p>${pictures[i].getId()}</p>
+                                        <p>${pictures[i].getFileName()}</p>
+                                    </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                        </c:if>
+                <div class="row">
+                    <c:if test="${status.index >= 3}">
+                    <c:forEach var="i" begin="3" end="${status.index}" varStatus="status2" step="1">
+                        <div class="col-sm-4 panel panel-info">
+                            <div class="panel-heading">Panel with panel-info class</div>
+                            <div class="panel-body">
+                                <p>${pictures[i].getId()}</p>
+                                <p>${pictures[i].getFileName()}</p>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+                </c:if>
 
-        <nav aria-label="...">
-            <ul class="pagination">
-                <c:if test="${currentPage == 1}">
-                    <li class="page-item disabled">
-                        <span class="page-link">Previous</span>
-                    </li>
+                    </div>
                 </c:if>
-                <c:if test="${currentPage > 1}">
-                    <li class="page-item">
-                        <a class="page-link" href="/picture/read/all/page/${currentPage - 1}">Previous</a>
-                    </li>
-                </c:if>
-                    <c:forEach begin="1" end="${pages}" varStatus="loop">
-                    <li class="page-item <c:if test="${currentPage == loop.index}">active"</c:if>"><a class="page-link" href="/picture/read/all/page/${loop.index}" act>${loop.index}</a></li>
-                </c:forEach>
-                <c:if test="${currentPage == pages}">
-                    <li class="page-item disabled">
-                        <span class="page-link">Next</span>
-                    </li>
-                </c:if>
-                <c:if test="${currentPage < pages}">
-                    <li class="page-item">
-                        <a class="page-link" href="/picture/read/all/page/${currentPage + 1}">Next</a>
-                    </li>
-                </c:if>
-            </ul>
-        </nav>
-    </div>
+            </c:forEach>
+
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <c:if test="${currentPage == 1}">
+                        <li class="page-item disabled">
+                            <span class="page-link">Previous</span>
+                        </li>
+                    </c:if>
+                    <c:if test="${currentPage > 1}">
+                        <li class="page-item">
+                            <a class="page-link" href="/picture/read/all/page/${currentPage - 1}">Previous</a>
+                        </li>
+                    </c:if>
+                        <c:forEach begin="1" end="${pages}" varStatus="loop">
+                        <li class="page-item <c:if test="${currentPage == loop.index}">active</c:if>"><a class="page-link" href="/picture/read/all/page/${loop.index}" act>${loop.index}</a></li>
+                    </c:forEach>
+                    <c:if test="${currentPage == pages}">
+                        <li class="page-item disabled">
+                            <span class="page-link">Next</span>
+                        </li>
+                    </c:if>
+                    <c:if test="${currentPage < pages}">
+                        <li class="page-item">
+                            <a class="page-link" href="/picture/read/all/page/${currentPage + 1}">Next</a>
+                        </li>
+                    </c:if>
+                </ul>
+            </nav>
+        </div>
     </c:if>
 </div>
 <jsp:include page="common/footer.jsp"/>

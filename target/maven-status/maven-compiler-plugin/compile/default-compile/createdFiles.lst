@@ -1,4 +1,3 @@
-pl/coderslab/app/picture/PictureRepository.class
 pl/coderslab/app/configuration/AppInitializer.class
 pl/coderslab/app/picture/PictureController.class
 pl/coderslab/app/comment/Comment.class
@@ -12,4 +11,5 @@ pl/coderslab/app/picture/PictureRepositoryCustom.class
 pl/coderslab/app/user/User.class
 pl/coderslab/app/picture/NotCorrectFileUploadException.class
 pl/coderslab/app/picture/Picture.class
+pl/coderslab/app/picture/PictureRepositoryPageable.class
 pl/coderslab/app/HomeController.class
