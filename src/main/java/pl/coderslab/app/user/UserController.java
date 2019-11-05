@@ -35,6 +35,10 @@ public class UserController {
         model.addAttribute("user", new User());
         return "login";
     }
+/*    @GetMapping("/perform_logout")
+    public String logoutGet() {
+        return "logout";
+    }*/
 
     @PostMapping("/loggedin")
     public String loggedIn(@ModelAttribute User user) {

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <header>
     <nav class="navbar navbar-inverse">
         <div class="container container-fluid">
@@ -14,9 +16,11 @@
                 <li><a href="/picture/add">Add Picture</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <sec:authorize access="!isAuthenticated()">
+                    <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()"><li><a href="/perform_logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li></sec:authorize>
             </ul>
         </div>
     </nav>

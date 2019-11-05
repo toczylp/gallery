@@ -1,5 +1,6 @@
 package pl.coderslab.app.picture;
 
+import com.drew.imaging.ImageProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -44,6 +45,7 @@ public class PictureController {
             if (!pictureValidate(bytePic[0], bytePic[1])) {
                 throw new NotCorrectFileUploadException();
             }
+            pictureService.exifInfo(bytePic);
             pictureService.save(fileName, bytePic);
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,6 +53,8 @@ public class PictureController {
             e.printStackTrace();
             model.addAttribute("error", ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES.keySet());
             return "add_picture";
+        } catch (ImageProcessingException e) {
+            e.printStackTrace();
         }
 
         return "redirect:add";

@@ -8,4 +8,7 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    User findByFirstName(String firstName);
+    User findByLogin(String login);
 }

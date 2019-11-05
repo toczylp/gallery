@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import javax.sql.DataSource;
 
@@ -18,12 +19,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.inMemoryAuthentication()
+      auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
                 .withUser("admin").password(passwordEncoder().encode("admin123")).roles("admin");
 
-/*        auth.jdbcAuthentication().dataSource(dataSource()).
-        withUser("admin").password(passwordEncoder().encode("admin")).roles("admin");*/
+   /*     auth.jdbcAuthentication()
+                .dataSource(dataSource())
+                .usersByUsernameQuery("SELECT login as username, password, id from User where login = ?")
+                .passwordEncoder(passwordEncoder());*/
     }
 
 
@@ -36,11 +39,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll().usernameParameter("login").successForwardUrl("/loggedin")
-                .and();
-                //.csrf().disable();
+                .and()
+                .logout()
+                .logoutUrl("/perform_logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .and()
+                .csrf().disable();
     }
 
-    @Bean
+/*    @Bean
     public DataSource dataSource() {
         SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/galleryDB?serverTimezone=UTC");
@@ -48,10 +57,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         dataSource.setPassword("coderslab");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
-    }
+    }*/
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
