@@ -19,14 +19,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-      auth.inMemoryAuthentication()
+/*      auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
-                .withUser("admin").password(passwordEncoder().encode("admin123")).roles("admin");
+                .withUser("admin").password(passwordEncoder().encode("admin123")).roles("admin");*/
 
-   /*     auth.jdbcAuthentication()
+        auth.jdbcAuthentication()
                 .dataSource(dataSource())
-                .usersByUsernameQuery("SELECT login as username, password, id from User where login = ?")
-                .passwordEncoder(passwordEncoder());*/
+                .usersByUsernameQuery("SELECT login as username, password, id from User where login = ?;")
+                .authoritiesByUsernameQuery("select roleName from Role r join User_Role UR on r.id = UR.roles_id join User U on UR.User_id = U.id where U.login = ?;")
+                .passwordEncoder(passwordEncoder());
     }
 
 
@@ -49,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
-/*    @Bean
+    @Bean
     public DataSource dataSource() {
         SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/galleryDB?serverTimezone=UTC");
@@ -57,7 +58,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         dataSource.setPassword("coderslab");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
-    }*/
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

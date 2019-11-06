@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
-    private final UserRepository userRepository;
+   // private final UserRepository userRepository;
+    private final UserService userService;
 
     @GetMapping("/signup")
     public String signupForm(Model model) {
@@ -25,8 +26,10 @@ public class UserController {
         if(result.hasErrors()) {
             return "signup";
         }
-        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
-        userRepository.save(user);
+
+        userService.saveUser(user);
+/*        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+        userRepository.save(user);*/
         return  "redirect:/";
     }
 
