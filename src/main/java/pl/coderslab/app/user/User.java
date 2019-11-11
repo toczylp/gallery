@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.app.picture.Picture;
 import pl.coderslab.app.role.Role;
+import pl.coderslab.app.user.customValidators.UniqueLogin;
+import pl.coderslab.app.user.customValidators.UniqueMail;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -34,6 +36,7 @@ public class User {
 
     @Email
     @NotEmpty
+    @UniqueMail
     private String mail;
 
     @ManyToMany(fetch = FetchType.EAGER)

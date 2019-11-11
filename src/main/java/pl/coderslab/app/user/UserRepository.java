@@ -15,10 +15,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByFirstName(String firstName);
     Optional<User> findByLogin(String login);
-
-//    @Modifying
-//    @Query(value = "/* dupa*/ update User set firstName =:newFirstName, lastName =:newLastName where id =:id", nativeQuery = true)
-//    void customUpdate(@Param("newFirstName") String newFirstName, @Param("newLastName") String newLastName, @Param("id") Long id);
+    Optional<User> findByMail(String mail);
 
     @Modifying
     @Query("update User u set u.firstName=:newFirstName, u.lastName=:newLastName where u.id =:id")

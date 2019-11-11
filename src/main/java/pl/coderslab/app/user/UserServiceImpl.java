@@ -9,6 +9,7 @@ import pl.coderslab.app.role.RoleRepository;
 import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Optional;
 
 @Transactional
 @RequiredArgsConstructor
@@ -31,6 +32,11 @@ public class UserServiceImpl implements UserService {
     }
     public User findByLogin(String login) throws UserNotFoundException {
         return userRepository.findByLogin(login).orElseThrow(UserNotFoundException::new);
+    }
+
+    @Override
+    public Optional<User> findByMail(String mail) {
+        return userRepository.findByMail(mail);
     }
 
     public void update(String newFirstName, String newLastName, Long id) {

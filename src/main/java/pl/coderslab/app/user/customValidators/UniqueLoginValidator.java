@@ -1,4 +1,6 @@
-package pl.coderslab.app.user;
+package pl.coderslab.app.user.customValidators;
+
+import pl.coderslab.app.user.UserService;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

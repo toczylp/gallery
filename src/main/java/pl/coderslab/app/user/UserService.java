@@ -1,5 +1,7 @@
 package pl.coderslab.app.user;
 
+import java.util.Optional;
+
 public interface UserService {
 
     User findByUserName(String name);
@@ -9,4 +11,5 @@ public interface UserService {
     void delete(User user);
     void deleteByUserId(Long id);
     User findByLogin(String login) throws UserNotFoundException;
+    Optional<User> findByMail(String mail);
 }

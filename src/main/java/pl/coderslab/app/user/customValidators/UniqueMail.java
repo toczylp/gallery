@@ -1,4 +1,4 @@
-package pl.coderslab.app.user;
+package pl.coderslab.app.user.customValidators;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -7,11 +7,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = UniqueLoginValidator.class)
+@Constraint(validatedBy = UniqueMailValidator.class)
 @Target({ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueLogin {
-    String message() default "{There is registered user with issued login}";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
+public @interface UniqueMail {
+        String message() default "{There is registered user with given mail}";
+        Class<?>[] groups() default {};
+        Class<? extends Payload>[] payload() default {};
 }
