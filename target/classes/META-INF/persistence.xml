@@ -6,7 +6,7 @@
     <persistence-unit name="galleryDBPersistenceUnit">
         <properties>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/galleryDB?serverTimezone=UTC"/>
+                      value="jdbc:mysql://localhost:3306/galleryDB"/>
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="coderslab" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
@@ -20,6 +20,7 @@
             <property name="hibernate.dialect"
                       value="org.hibernate.dialect.MySQL57Dialect" />
             <property name="hibernate.connection.characterEncoding" value="utf8" />
+            <property name="javax.persistence.validation.mode" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>

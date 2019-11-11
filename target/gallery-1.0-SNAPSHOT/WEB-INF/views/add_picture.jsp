@@ -23,10 +23,16 @@
                 <form action="/picture/add" method="post" enctype="multipart/form-data">
                     <p>Select image:</p><br>
                     <input type="file" name="file" path="pic"/><br>
-                    <input type="submit" class="btn btn-primary btn-lg" value="Upload"/>
+                    <div>
+                        <input type="radio" id="one"name="publicFlag" value="1" checked>
+                        <label for="one"><h4>Public</h4></label><br>
+                        <input type="radio" id="two" name="publicFlag" value="0">
+                        <label for="two"><h4>Make it Private</h4></label>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Upload"/>
                     <c:if test="${error != null}">
                         <div class="alert alert-danger" role="alert">
-                            <h4>Dozwolone formaty plików :</h4>
+                            <h4>Error message:</h4>
                                 <c:forEach items="${error}" var="el">
                                         <p>${el.toString()}</p>
                                 </c:forEach>

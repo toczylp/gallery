@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource())
                 .usersByUsernameQuery("SELECT login as username, password, id from User where login = ?;")
-                .authoritiesByUsernameQuery("select roleName from Role r join User_Role UR on r.id = UR.roles_id join User U on UR.User_id = U.id where U.login = ?;")
+                .authoritiesByUsernameQuery("select U.login, r.roleName from Role r join User_Role UR on r.id = UR.roles_id join User U on UR.User_id = U.id where U.login = ?;")
                 .passwordEncoder(passwordEncoder());
     }
 
@@ -50,6 +50,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
+/*    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.authorizeRequests()
+                .antMatchers("/**").permitAll()
+                .and()
+                .csrf().disable();
+    }*/
+
     @Bean
     public DataSource dataSource() {
         SingleConnectionDataSource dataSource = new SingleConnectionDataSource();
@@ -64,5 +73,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }

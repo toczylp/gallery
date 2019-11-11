@@ -30,10 +30,10 @@
                         <c:if test="${status.index < 3}">
                         <c:forEach var="i" begin="0" end="${status.index}" varStatus="status2" step="1">
                             <div class="col-sm-4 panel panel-info">
-                                <div class="panel-heading">Panel with panel-info class</div>
+                                <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
                                     <div class="panel-body">
-                                        <p>${pictures[i].getId()}</p>
-                                        <p>${pictures[i].getFileName()}</p>
+                                        <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
+                                        <p>Upload date: ${pictures[i].getCreated()}    <span class="glyphicon glyphicon-info-sign lg"><a href="/picture/${pictures[i].getId()}/details">More</a><</span></p>
                                     </div>
                             </div>
                         </c:forEach>
@@ -43,10 +43,10 @@
                     <c:if test="${status.index >= 3}">
                     <c:forEach var="i" begin="3" end="${status.index}" varStatus="status2" step="1">
                         <div class="col-sm-4 panel panel-info">
-                            <div class="panel-heading">Panel with panel-info class</div>
+                            <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
                             <div class="panel-body">
-                                <p>${pictures[i].getId()}</p>
-                                <p>${pictures[i].getFileName()}</p>
+                                <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
+                                <p>Upload date: ${pictures[i].getCreated()}    <span class="glyphicon glyphicon-info-sign lg"><a href="/picture/${pictures[i].getId()}/details">More </a></span></p>
                             </div>
                         </div>
                     </c:forEach>

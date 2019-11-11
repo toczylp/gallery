@@ -1,17 +1,18 @@
 package pl.coderslab.app.user;
 
 import lombok.Data;
-import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.coderslab.app.picture.Picture;
 import pl.coderslab.app.role.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,6 +26,7 @@ public class User {
     @NotEmpty
     private String lastName;
 
+    @UniqueLogin
     @NotEmpty
     private String login;
     @NotEmpty
@@ -34,19 +36,33 @@ public class User {
     @NotEmpty
     private String mail;
 
-    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
+
     private LocalDate created;
+
+    private LocalDateTime createdLocalDateTime;
+
+    private LocalDate updated;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private List<Picture> pictures;
+
     @Max(10)
     private int picsCounter;
 
     @PrePersist
     public void prePersist() {
         this.created = LocalDate.now();
+        this.createdLocalDateTime = LocalDateTime.now();
 
+    }
+    @PreUpdate
+    public void preUpdate() {
+        this.updated = LocalDate.now();
     }
 
 }

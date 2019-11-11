@@ -49,4 +49,5 @@ public class AppConfig implements WebMvcConfigurer {
     public Validator validator() {
         return new LocalValidatorFactoryBean();
     }
+
 }

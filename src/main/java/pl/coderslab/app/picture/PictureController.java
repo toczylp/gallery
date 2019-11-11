@@ -3,19 +3,17 @@ package pl.coderslab.app.picture;
 import com.drew.imaging.ImageProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pl.coderslab.app.user.UserNotFoundException;
 
-import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 
 @RequiredArgsConstructor
@@ -28,6 +26,7 @@ public class PictureController {
     private final Map<String, String> ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES = Map.of(
             "JPEG", "ffd8", "PNG", "8950", "BMP", "424d", "TIFF", "4949"
     );
+    private final String PUBLIC_FLAG = "publicFlag";
 
     @GetMapping("/add")
     public String addForm(Model model) {
@@ -36,28 +35,32 @@ public class PictureController {
     }
 
     @PostMapping("/add")
-    public String add(@RequestParam("file") MultipartFile file, Model model) {
+    public String add(@RequestParam("file") MultipartFile file, @RequestParam int publicFlag, Model model, Principal principal) {
 
+            String fileName = file.getOriginalFilename();
+            try {
+                byte[] bytePic = file.getBytes();
+                if (!pictureValidate(bytePic[0], bytePic[1])) {
+                    throw new NotCorrectFileUploadException();
+                }
+                pictureService.save(fileName, bytePic, principal, publicFlag);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                e.getStackTrace();
+                e.getMessage();
+                model.addAttribute("error", "You must select the image to upload");
+                return "add_picture";
 
-        String fileName = file.getOriginalFilename();
-        try {
-            byte[] bytePic = file.getBytes();
-            if (!pictureValidate(bytePic[0], bytePic[1])) {
-                throw new NotCorrectFileUploadException();
+            } catch (NotCorrectFileUploadException e) {
+                e.printStackTrace();
+                model.addAttribute("error", ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES.keySet());
+                return "add_picture";
+            } catch (UserNotFoundException e) {
+                e.printStackTrace();
             }
-            pictureService.exifInfo(bytePic);
-            pictureService.save(fileName, bytePic);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NotCorrectFileUploadException e) {
-            e.printStackTrace();
-            model.addAttribute("error", ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES.keySet());
-            return "add_picture";
-        } catch (ImageProcessingException e) {
-            e.printStackTrace();
-        }
-
         return "redirect:add";
+
     }
 
     @RequestMapping(value = "/read/{id}")
@@ -68,15 +71,40 @@ public class PictureController {
         return "display_picture";
     }
 
+    @RequestMapping(value = "/read/all/public/page/{page}")
+    public String readAllPublicPictures(Model model, @PathVariable("page") int page) {
+
+        List<Picture> encodedPictures = pictureService.findAllPublicPaginable(page);
+        model.addAttribute("pages", pictureService.totalPagesNoPublic(page));
+        model.addAttribute("pictures", encodedPictures);
+        model.addAttribute("currentPage", page);
+        return "display_picture";
+    }
+
+    @RequestMapping(value = "/my_gallery/page/{page}")
+    public String readMyGallery(Model model, @PathVariable("page") int page, Principal principal) {
+
+        List<Picture> encodedPictures = pictureService.findAllPictureByUserLogin(page, principal.getName());
+        model.addAttribute("pages", pictureService.totalPagesNoUserGallery(page,principal.getName()));
+        model.addAttribute("pictures", encodedPictures);
+        model.addAttribute("currentPage", page);
+        return "display_picture";
+    }
+
     @RequestMapping(value = "/read/all/page/{page}")
     public String readAllPictures(Model model, @PathVariable("page") int page) {
 
         List<Picture> encodedPictures = pictureService.findAllPaginable(page);
-
         model.addAttribute("pages", pictureService.totalPagesNo(page));
         model.addAttribute("pictures", encodedPictures);
         model.addAttribute("currentPage", page);
         return "display_picture";
+    }
+
+    @GetMapping("/{id}/details")
+    public String pictureDetails(@PathVariable Long id, Model model) throws ImageProcessingException, IOException {
+        model.addAttribute("details", pictureService.getExifInfo(id));
+        return "picture_details";
     }
 
 
