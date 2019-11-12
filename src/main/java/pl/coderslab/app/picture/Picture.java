@@ -1,15 +1,15 @@
 package pl.coderslab.app.picture;
 
 import lombok.Data;
+import java.util.List;
 import org.springframework.security.crypto.codec.Base64;
-import org.springframework.transaction.annotation.Transactional;
+import pl.coderslab.app.comment.Comment;
 import pl.coderslab.app.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Map;
 
 @Data
 @Entity
@@ -32,6 +32,9 @@ public class Picture {
 
     @ManyToOne
     private User user;
+
+    @OneToMany(mappedBy = "picture", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private List<Comment> comments;
 
     @NotNull
     private int publicFlag;

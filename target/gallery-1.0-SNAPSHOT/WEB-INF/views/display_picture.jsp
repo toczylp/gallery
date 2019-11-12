@@ -22,7 +22,7 @@
                 </c:if>
                 <div class="col-sm-4">
                     <h1>${el.getFileName()}</h1>
-                    <img src="data:image/jpeg;base64,${el.getEncodedPic()}" alt="DUPA" width="100%" height="auto"/>
+                    <a href="../../../../../picture/read/${el.getId()}"><img src="data:image/jpeg;base64,${el.getEncodedPic()}" alt="DUPA" width="100%" height="auto"/></a>
                 </div>
                 <c:if test="${status.index % 3 == 2 ||  status.last}">
                     </div>

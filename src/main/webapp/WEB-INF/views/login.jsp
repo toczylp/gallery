@@ -15,7 +15,7 @@
 <body>
 <jsp:include page="common/header.jsp"/>
 <div class="container">
-    <h4>SIGNUP</h4>
+    <h4>LOGIN</h4>
     <div class="card">
         <div class="card-body">
             <div class="form-group">

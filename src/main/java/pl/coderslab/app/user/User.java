@@ -2,6 +2,7 @@ package pl.coderslab.app.user;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import pl.coderslab.app.comment.Comment;
 import pl.coderslab.app.picture.Picture;
 import pl.coderslab.app.role.Role;
 import pl.coderslab.app.user.customValidators.UniqueLogin;
@@ -54,6 +55,8 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Picture> pictures;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Comment> comments;
     @Max(10)
     private int picsCounter;
 

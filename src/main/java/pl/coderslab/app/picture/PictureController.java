@@ -2,14 +2,23 @@ package pl.coderslab.app.picture;
 
 import com.drew.imaging.ImageProcessingException;
 import lombok.RequiredArgsConstructor;
+import org.dom4j.rule.Mode;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pl.coderslab.app.comment.Comment;
+import pl.coderslab.app.comment.CommentService;
 import pl.coderslab.app.user.UserNotFoundException;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
@@ -23,6 +32,7 @@ import java.util.Map;
 public class PictureController {
 
     private final PictureService pictureService;
+    private final CommentService commentService;
     private final Map<String, String> ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES = Map.of(
             "JPEG", "ffd8", "PNG", "8950", "BMP", "424d", "TIFF", "4949"
     );
@@ -63,12 +73,22 @@ public class PictureController {
 
     }
 
-    @RequestMapping(value = "/read/{id}")
-    public String readPicture(@PathVariable Long id, Model model) {
 
+    @GetMapping(value = "/read/{id}")
+    public String readPicture(@PathVariable Long id, Model model) {
         Picture picture = pictureService.findById(id);
-        model.addAttribute("pic", picture.getEncodedPic());
-        return "display_picture";
+        model.addAttribute("singlePicture", picture);
+        model.addAttribute("comment", new Comment());
+        model.addAttribute("commentsList", commentService.readAllByPictureId(id));
+        return "display_single_picture";
+    }
+    @PostMapping(value = "/{id}/add_comment")
+    public String addComment(@PathVariable Long id, @ModelAttribute @Valid Comment comment, BindingResult result, Principal principal) {
+        if (result.hasErrors()) {
+            return "redirect:../read/" + id;
+        }
+        commentService.save(comment, id, principal.getName());
+        return "redirect:../read/" + id;
     }
 
     @RequestMapping(value = "/read/all/public/page/{page}")

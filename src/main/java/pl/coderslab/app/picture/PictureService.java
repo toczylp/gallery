@@ -39,7 +39,9 @@ public class PictureService {
     }
 
     public Picture findById(Long id) {
-        return pictureRepositoryCustom.findById(id);
+        Picture picture = pictureRepositoryCustom.findById(id);
+        picture.setEncodedPic(picture.encodePic());
+        return picture;
     }
 
     public List<Picture> findAll() {
@@ -107,4 +109,5 @@ public class PictureService {
         }
         return exif;
     }
+
 }
