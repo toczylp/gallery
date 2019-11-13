@@ -2,9 +2,6 @@ package pl.coderslab.app.picture;
 
 import com.drew.imaging.ImageProcessingException;
 import lombok.RequiredArgsConstructor;
-import org.dom4j.rule.Mode;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +12,6 @@ import pl.coderslab.app.comment.Comment;
 import pl.coderslab.app.comment.CommentService;
 import pl.coderslab.app.user.UserNotFoundException;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
@@ -27,7 +21,7 @@ import java.util.Map;
 
 @RequiredArgsConstructor
 @Controller
-@Secured("ROLE_ADMIN")
+@Secured("ROLE_USER")
 @RequestMapping("/picture")
 public class PictureController {
 
@@ -83,7 +77,7 @@ public class PictureController {
         return "display_single_picture";
     }
     @PostMapping(value = "/{id}/add_comment")
-    public String addComment(@PathVariable Long id, @ModelAttribute @Valid Comment comment, BindingResult result, Principal principal) {
+    public String addComment(@PathVariable Long id, @ModelAttribute Comment comment, BindingResult result, Principal principal) {
         if (result.hasErrors()) {
             return "redirect:../read/" + id;
         }
