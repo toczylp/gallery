@@ -2,6 +2,8 @@ package pl.coderslab.app.picture;
 
 import lombok.Data;
 import java.util.List;
+
+import org.springframework.format.annotation.NumberFormat;
 import org.springframework.security.crypto.codec.Base64;
 import pl.coderslab.app.comment.Comment;
 import pl.coderslab.app.user.User;
@@ -33,11 +35,17 @@ public class Picture {
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "picture", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "picture", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
 
     @NotNull
     private int publicFlag;
+
+    private int directDisplayQty = 0;
+
+    private double rating = 0.0d;
+
+    private int ratesQty = 0;
 
     @Transient
     private String encodedPic;

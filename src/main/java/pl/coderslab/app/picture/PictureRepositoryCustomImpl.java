@@ -57,4 +57,5 @@ public class PictureRepositoryCustomImpl implements PictureRepositoryCustom {
         }
         return pictures;
     }
+
 }

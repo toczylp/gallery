@@ -2,9 +2,6 @@ package pl.coderslab.app.picture;
 
 import com.drew.imaging.ImageProcessingException;
 import lombok.RequiredArgsConstructor;
-import org.dom4j.rule.Mode;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +12,10 @@ import pl.coderslab.app.comment.Comment;
 import pl.coderslab.app.comment.CommentService;
 import pl.coderslab.app.user.UserNotFoundException;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.net.http.HttpRequest;
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
@@ -75,11 +71,14 @@ public class PictureController {
 
 
     @GetMapping(value = "/read/{id}")
-    public String readPicture(@PathVariable Long id, Model model) {
+    public String readPicture(@PathVariable Long id, Model model) throws ImageProcessingException, IOException {
+
         Picture picture = pictureService.findById(id);
+
         model.addAttribute("singlePicture", picture);
         model.addAttribute("comment", new Comment());
         model.addAttribute("commentsList", commentService.readAllByPictureId(id));
+        model.addAttribute("details", pictureService.getExifInfo(id));
         return "display_single_picture";
     }
     @PostMapping(value = "/{id}/add_comment")
@@ -87,7 +86,17 @@ public class PictureController {
         if (result.hasErrors()) {
             return "redirect:../read/" + id;
         }
+        comment.setId(null); //zapytać się o nullowanie obiektu
         commentService.save(comment, id, principal.getName());
+        return "redirect:../read/" + id;
+    }
+
+    @PostMapping(value = "/{id}/rate")
+    public String rate(@PathVariable Long id, Model model, HttpServletRequest request) {
+
+        String rate = request.getParameter("rating");
+        int rateAsInt = Integer.parseInt(rate);
+        pictureService.rate(rateAsInt, id);
         return "redirect:../read/" + id;
     }
 

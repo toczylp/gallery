@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -17,7 +18,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate created;
+    private LocalDateTime created;
 
     @NotEmpty
     @Size(max = 60)
@@ -31,6 +32,6 @@ public class Comment {
 
     @PrePersist
     public void prePersist() {
-        this.created = LocalDate.now();
+        this.created = LocalDateTime.now();
     }
 }

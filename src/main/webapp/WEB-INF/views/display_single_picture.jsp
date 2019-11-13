@@ -20,12 +20,29 @@
                     <img src="data:image/jpeg;base64,${singlePicture.getEncodedPic()}" alt="DUPA" width="100%" height="auto"/>
                 </div>
                 <div class="col-sm-4">
+                    <div class="row">
                     <h4>Comment (max 60 characters):</h4>
                     <form:form method="post" action="../${singlePicture.getId()}/add_comment" modelAttribute="comment">
                         <form:textarea path="content" cols="auto" rows="3"/><br>
                         <form:errors path="content" element="div" class="alert alert-danger" role="alert"/>
                         <input type="submit" class="btn btn-primary" value="COMMENT"/>
                     </form:form>
+                    </div>
+                    <div class="container" style="border-color: chartreuse; border-width: 1px">
+                            <p>Basic Info: </p>
+                            <c:forEach items="${details}" var="el" varStatus="status">
+                                <p>${el.key}<span> : </span>${el.value}</p>
+                            </c:forEach>
+                    </div>
+                    <div class="container">
+                        <p><span style="font-weight: bold">Views</span> : ${singlePicture.getDirectDisplayQty()}</p>
+                    </div>
+                    <div class="container">
+                        <form method="post" action="../${singlePicture.getId()}/rate">
+                            <input type="radio" name="rating" value="5">5<input type="radio" name="rating" value="4">4<input type="radio" name="rating" value="3">3<input type="radio" name="rating" value="2">2<input type="radio" name="rating" value="1">1<br>
+                            <input type="submit" class="btn btn-primary" value="RATE"/>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="row">

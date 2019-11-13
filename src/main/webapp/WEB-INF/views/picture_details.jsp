@@ -17,9 +17,7 @@
         <div class="container">
             <c:forEach items="${details}" var="el" varStatus="status">
                     <div class="row">
-
                         <p>${el.key}<span> : </span>${el.value}</p>
-
                     </div>
             </c:forEach>
         </div>

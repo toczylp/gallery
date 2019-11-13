@@ -40,8 +40,15 @@ public class PictureService {
 
     public Picture findById(Long id) {
         Picture picture = pictureRepositoryCustom.findById(id);
+        picture.setDirectDisplayQty(picture.getDirectDisplayQty() + 1);
         picture.setEncodedPic(picture.encodePic());
         return picture;
+    }
+
+    public void rate(int rate, Long id) {
+        Picture picture = pictureRepositoryCustom.findById(id);
+        picture.setRating((picture.getRating() * picture.getRatesQty() + rate) / (picture.getRatesQty() + 1));
+        picture.setRatesQty(picture.getRatesQty() + 1);
     }
 
     public List<Picture> findAll() {

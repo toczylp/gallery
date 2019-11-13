@@ -19,6 +19,4 @@ public interface  PictureRepositoryCustom {
     List<Picture> findAll();
 
     List<Picture> findAllWithUser();
-
-
 }
