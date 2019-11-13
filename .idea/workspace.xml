@@ -9,14 +9,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java" line="105" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f03ccd7e-bea3-4844-8dcd-15349bb41b90" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36058b7c-ed42-440c-b7f7-599c330fb92a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36058b7c-ed42-440c-b7f7-599c330fb92a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-    </list>
+    <list default="true" id="f03ccd7e-bea3-4844-8dcd-15349bb41b90" name="Default Changelist" comment="" />
     <list id="4539fc7e-7ac1-4fe7-811e-39ece33841fe" name="add comment repo &amp; service, view for single page display &amp; add comments, need to fix bug with validating comment's content" comment="add comment repo &amp; service, view for single page display &amp; add comments, need to fix bug with validating comment's content&#10;&#10;(cherry picked from commit 7242f78885f9569520598fab63c3b539932fe81b)">
       <changelist_data name="toczylp" email="piotr.toczylowski@gamil.com" date="1573597465000" />
     </list>
@@ -230,7 +223,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/NotCorrectFileUploadException.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/coderslab/app/configuration/SecurityInitializer.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/loggedin.jsp" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -279,8 +271,9 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustomImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustom.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -621,12 +614,20 @@
       <workItem from="1573374080290" duration="25026000" />
       <workItem from="1573494270811" duration="488000" />
       <workItem from="1573495309161" duration="22201000" />
-      <workItem from="1573684526354" duration="1122000" />
+      <workItem from="1573684526354" duration="1380000" />
     </task>
+    <task id="LOCAL-00001" summary="rating functionality, fix bug with adding comments">
+      <created>1573685647879</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573685647879</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194292000" />
+    <option name="totallyTimeSpent" value="194550000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
