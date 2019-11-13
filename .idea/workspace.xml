@@ -10,21 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f03ccd7e-bea3-4844-8dcd-15349bb41b90" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36058b7c-ed42-440c-b7f7-599c330fb92a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36058b7c-ed42-440c-b7f7-599c330fb92a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/comment/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/comment/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/comment/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/comment/CommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustomImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustomImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_single_picture.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_single_picture.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/picture_details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/picture_details.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/picture/Picture.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/picture/PictureController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <list id="4539fc7e-7ac1-4fe7-811e-39ece33841fe" name="add comment repo &amp; service, view for single page display &amp; add comments, need to fix bug with validating comment's content" comment="add comment repo &amp; service, view for single page display &amp; add comments, need to fix bug with validating comment's content&#10;&#10;(cherry picked from commit 7242f78885f9569520598fab63c3b539932fe81b)">
       <changelist_data name="toczylp" email="piotr.toczylowski@gamil.com" date="1573597465000" />
+    </list>
+    <list id="63eb44d9-c2d8-4db9-95f5-ea3a133dadf6" name="rating functionality, fix bug with adding comments" comment="rating functionality, fix bug with adding comments">
+      <changelist_data name="toczylp" email="piotr.toczylowski@gamil.com" date="1573684341000" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -93,11 +90,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="98" selection-start-line="98" selection-end-line="98" />
+            <state relative-caret-position="220">
+              <caret line="98" column="43" lean-forward="true" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,10 +102,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="das://36058b7c-ed42-440c-b7f7-599c330fb92a/schema/galleryDB/table/Picture">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="3e48ecb9-08a9-4a19-a2cd-11fc761ff259">
+            <state projectRestartId="912fda44-ccfc-46ea-b06e-38a8356bc717">
               <filtering>
                 <filter text="" />
               </filtering>
@@ -124,12 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_single_picture.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="41" column="58" lean-forward="true" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#p#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="615">
+              <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -137,14 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
+            <state relative-caret-position="435">
               <caret line="50" column="55" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
-              <folding>
-                <element signature="e#1529#1530#0" expanded="true" />
-                <element signature="e#1585#1586#0" expanded="true" />
-                <element signature="e#1630#1631#0" expanded="true" />
-                <element signature="e#1694#1695#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -152,12 +139,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustomImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
+            <state relative-caret-position="855">
               <caret line="59" selection-start-line="59" selection-end-line="59" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#0#23#1" expanded="true" />
-                <element signature="e#0#23#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -187,8 +172,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/Picture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="47" column="29" lean-forward="true" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+            <state relative-caret-position="675">
+              <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -199,7 +184,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="das://36058b7c-ed42-440c-b7f7-599c330fb92a/schema/galleryDB/table/Comment">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="3e48ecb9-08a9-4a19-a2cd-11fc761ff259">
+            <state projectRestartId="912fda44-ccfc-46ea-b06e-38a8356bc717">
               <filtering>
                 <filter text="" />
               </filtering>
@@ -341,7 +326,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -463,6 +447,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -636,11 +621,12 @@
       <workItem from="1573374080290" duration="25026000" />
       <workItem from="1573494270811" duration="488000" />
       <workItem from="1573495309161" duration="22201000" />
+      <workItem from="1573684526354" duration="1122000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193170000" />
+    <option name="totallyTimeSpent" value="194292000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -653,7 +639,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="25" width="1855" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48970252" visible="true" weight="0.18573798" />
       <window_info id="Structure" order="1" sideWeight="0.50595236" side_tool="true" weight="0.28911" />
@@ -667,7 +652,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.73134327" weight="0.07883369" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5920398" visible="true" weight="0.24190065" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5920398" weight="0.43736503" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49695966" weight="0.32937366" />
@@ -680,7 +665,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="13" sideWeight="0.49695966" weight="0.32937366" />
       <window_info anchor="bottom" id="Spring" order="14" sideWeight="0.49806523" weight="0.32937366" />
       <window_info anchor="bottom" id="Database Changes" order="15" sideWeight="0.498618" weight="0.32937366" />
-      <window_info anchor="bottom" id="Version Control" order="16" sideWeight="0.498618" weight="0.32937366" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="16" sideWeight="0.498618" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Thumbnails" order="17" sideWeight="0.498618" weight="0.32937366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2498618" />
@@ -688,7 +673,7 @@
       <window_info anchor="right" id="Maven" order="3" weight="0.18629077" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info active="true" anchor="right" id="Database" order="6" sideWeight="0.4976378" visible="true" weight="0.15975676" />
+      <window_info anchor="right" id="Database" order="6" sideWeight="0.4976378" visible="true" weight="0.15975676" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" weight="0.32946378" />
@@ -772,6 +757,24 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="rating functionality, fix bug with adding comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="rating functionality, fix bug with adding comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1209,15 +1212,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://36058b7c-ed42-440c-b7f7-599c330fb92a/schema/galleryDB/table/Comment">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="3e48ecb9-08a9-4a19-a2cd-11fc761ff259">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/picture_details.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1228,13 +1222,34 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/Picture.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_single_picture.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="47" column="29" lean-forward="true" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+        <state relative-caret-position="615">
+          <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="50" column="55" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustomImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1248,65 +1263,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustomImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/Picture.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#0#23#1" expanded="true" />
-            <element signature="e#0#23#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureRepositoryCustom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="50" column="55" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
-          <folding>
-            <element signature="e#1529#1530#0" expanded="true" />
-            <element signature="e#1585#1586#0" expanded="true" />
-            <element signature="e#1630#1631#0" expanded="true" />
-            <element signature="e#1694#1695#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_single_picture.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="41" column="58" lean-forward="true" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        <state relative-caret-position="675">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://36058b7c-ed42-440c-b7f7-599c330fb92a/schema/galleryDB/table/Comment">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="912fda44-ccfc-46ea-b06e-38a8356bc717">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
     <entry file="das://36058b7c-ed42-440c-b7f7-599c330fb92a/schema/galleryDB/table/Picture">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="3e48ecb9-08a9-4a19-a2cd-11fc761ff259">
+        <state projectRestartId="912fda44-ccfc-46ea-b06e-38a8356bc717">
           <filtering>
             <filter text="" />
           </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="98" column="43" lean-forward="true" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
