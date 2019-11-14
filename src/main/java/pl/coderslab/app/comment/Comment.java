@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Entity
@@ -33,5 +34,9 @@ public class Comment {
     @PrePersist
     public void prePersist() {
         this.created = LocalDateTime.now();
+    }
+
+    public String dateFormatToString() {
+        return this.created.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
     }
 }

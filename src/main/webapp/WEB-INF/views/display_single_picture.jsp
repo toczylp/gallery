@@ -24,7 +24,9 @@
                     <h4>Comment (max 60 characters):</h4>
                     <form:form method="post" action="../${singlePicture.getId()}/add_comment" modelAttribute="comment">
                         <form:textarea path="content" cols="auto" rows="3"/><br>
-                        <form:errors path="content" element="div" class="alert alert-danger" role="alert"/>
+                        <c:if test="${error != null}">
+                            <div class="alert alert-danger" role="alert">${error}</div>
+                        </c:if>
                         <input type="submit" class="btn btn-primary" value="COMMENT"/>
                     </form:form>
                     </div>
@@ -60,7 +62,7 @@
                     <c:forEach items="${commentsList}" var="el" varStatus="loop">
                         <tr>
                             <th scope="row">${loop.index + 1}</th>
-                            <td>${el.getCreated()}</td>
+                            <td>${el.dateFormatToString()}</td>
                             <td>${el.getUser().getLogin()}</td>
                             <td>${el.getContent()}</td>
                         </tr>

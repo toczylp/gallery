@@ -10,7 +10,9 @@ import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import pl.coderslab.app.user.User;
 import pl.coderslab.app.user.UserNotFoundException;
+import pl.coderslab.app.user.UserService;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -19,6 +21,7 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -31,6 +34,7 @@ public class PictureService {
     private final int PICTURES_IN_PAGE = 6;
     private final int PUBLIC_FLAG = 1;
 
+    private final UserService userService;
     private final PictureRepositoryPageable pictureRepositoryPageable;
     private final PictureRepositoryCustom pictureRepositoryCustom;
 
@@ -38,16 +42,22 @@ public class PictureService {
         pictureRepositoryCustom.save(fileName, pic, principal, publicFlag);
     }
 
-    public Picture findById(Long id) {
+    public Picture findByIdAndIncreaseViewsQty(Long id) {
         Picture picture = pictureRepositoryCustom.findById(id);
         picture.setDirectDisplayQty(picture.getDirectDisplayQty() + 1);
         picture.setEncodedPic(picture.encodePic());
         return picture;
     }
 
-    public void rate(int rate, Long id) {
+    public void decreaseViewsQtybyOne(Long id) {
+        Picture picture = pictureRepositoryCustom.findById(id);
+        picture.setDirectDisplayQty(picture.getDirectDisplayQty() - 1);
+    }
+
+    public void rateAndDecreaseViewsQtyByOne(int rate, Long id) {
         Picture picture = pictureRepositoryCustom.findById(id);
         picture.setRating((picture.getRating() * picture.getRatesQty() + rate) / (picture.getRatesQty() + 1));
+        picture.setDirectDisplayQty(picture.getDirectDisplayQty() - 1);
         picture.setRatesQty(picture.getRatesQty() + 1);
     }
 

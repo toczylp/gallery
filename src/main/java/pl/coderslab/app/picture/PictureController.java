@@ -15,7 +15,6 @@ import pl.coderslab.app.user.UserNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.net.http.HttpRequest;
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
@@ -35,13 +34,13 @@ public class PictureController {
     private final String PUBLIC_FLAG = "publicFlag";
 
     @GetMapping("/add")
-    public String addForm(Model model) {
+    public String addPictureForm(Model model) {
         model.addAttribute("picture", new Picture());
         return "add_picture";
     }
 
     @PostMapping("/add")
-    public String add(@RequestParam("file") MultipartFile file, @RequestParam int publicFlag, Model model, Principal principal) {
+    public String addPicture(@RequestParam("file") MultipartFile file, @RequestParam int publicFlag, Model model, Principal principal) {
 
             String fileName = file.getOriginalFilename();
             try {
@@ -69,11 +68,15 @@ public class PictureController {
 
     }
 
-
     @GetMapping(value = "/read/{id}")
-    public String readPicture(@PathVariable Long id, Model model) throws ImageProcessingException, IOException {
+    public String readPicture(@PathVariable Long id, Model model, HttpServletRequest request) throws ImageProcessingException, IOException {
 
-        Picture picture = pictureService.findById(id);
+        Picture picture = pictureService.findByIdAndIncreaseViewsQty(id);
+        request.getParameter("excessiveCommentLengthValidationError");
+
+        if(request.getParameter("excessiveCommentLengthValidationError") != null) {
+            model.addAttribute("error", request.getParameter("excessiveCommentLengthValidationError"));
+        }
 
         model.addAttribute("singlePicture", picture);
         model.addAttribute("comment", new Comment());
@@ -82,21 +85,24 @@ public class PictureController {
         return "display_single_picture";
     }
     @PostMapping(value = "/{id}/add_comment")
-    public String addComment(@PathVariable Long id, @ModelAttribute @Valid Comment comment, BindingResult result, Principal principal) {
+    public String addComment(@PathVariable Long id, @ModelAttribute @Valid Comment comment, BindingResult result, Principal principal, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("excessiveCommentLengthValidationError", result.getFieldError("content").getDefaultMessage());
+            pictureService.decreaseViewsQtybyOne(id);
             return "redirect:../read/" + id;
         }
         comment.setId(null); //zapytać się o nullowanie obiektu
+        pictureService.decreaseViewsQtybyOne(id);
         commentService.save(comment, id, principal.getName());
         return "redirect:../read/" + id;
     }
 
     @PostMapping(value = "/{id}/rate")
-    public String rate(@PathVariable Long id, Model model, HttpServletRequest request) {
+    public String rate(@PathVariable Long id, Model model, HttpServletRequest request, Principal principal) throws UserNotFoundException {
 
         String rate = request.getParameter("rating");
         int rateAsInt = Integer.parseInt(rate);
-        pictureService.rate(rateAsInt, id);
+        pictureService.rateAndDecreaseViewsQtyByOne(rateAsInt, id);
         return "redirect:../read/" + id;
     }
 
