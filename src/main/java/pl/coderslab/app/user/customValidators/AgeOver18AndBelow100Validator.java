@@ -8,10 +8,10 @@ import java.time.LocalDate;
 import java.time.Period;
 
 @RequiredArgsConstructor
-public class AgeOver18Validator implements ConstraintValidator<AgeOver18, LocalDate> {
+public class AgeOver18AndBelow100Validator implements ConstraintValidator<AgeOver18AndBelow100, LocalDate> {
 
     @Override
-    public void initialize(AgeOver18 constraint) {
+    public void initialize(AgeOver18AndBelow100 constraint) {
     }
 
     @Override
@@ -19,7 +19,7 @@ public class AgeOver18Validator implements ConstraintValidator<AgeOver18, LocalD
 
         Period period = Period.between(yearOfBirthCandidate ,LocalDate.now());
 
-        return period.getYears() > 18;
+        return period.getYears() > 18 && period.getYears() < 100;
 
     }
 }

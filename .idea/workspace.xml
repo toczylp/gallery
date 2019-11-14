@@ -6,7 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f03ccd7e-bea3-4844-8dcd-15349bb41b90" name="Default Changelist" comment="" />
+    <list default="true" id="f03ccd7e-bea3-4844-8dcd-15349bb41b90" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/customValidators/AgeOver18.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/customValidators/AgeOver18AndBelow100.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/customValidators/AgeOver18Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/customValidators/AgeOver18AndBelow100Validator.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +79,32 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/recovered" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
@@ -296,7 +326,7 @@
       <workItem from="1573674175548" duration="2641000" />
       <workItem from="1573848284255" duration="1569000" />
       <workItem from="1573851298407" duration="24428000" />
-      <workItem from="1574105924146" duration="46363000" />
+      <workItem from="1574105924146" duration="47433000" />
     </task>
     <servers />
   </component>
