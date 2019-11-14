@@ -962,22 +962,23 @@
     </collation>
     <table id="245" parent="8" name="Comment"/>
     <table id="246" parent="8" name="Picture"/>
-    <table id="247" parent="8" name="Role"/>
-    <table id="248" parent="8" name="User"/>
-    <table id="249" parent="8" name="User_Role"/>
-    <column id="250" parent="245" name="id">
+    <table id="247" parent="8" name="Picture_Comment"/>
+    <table id="248" parent="8" name="Role"/>
+    <table id="249" parent="8" name="User"/>
+    <table id="250" parent="8" name="User_Role"/>
+    <column id="251" parent="245" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="245" name="content">
+    <column id="252" parent="245" name="content">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="245" name="created">
+    <column id="253" parent="245" name="created">
       <Position>3</Position>
       <DataType>datetime(6)|0s</DataType>
       <ColumnKind>normal</ColumnKind>

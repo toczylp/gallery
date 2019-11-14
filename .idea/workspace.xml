@@ -29,6 +29,9 @@
     <list id="4539fc7e-7ac1-4fe7-811e-39ece33841fe" name="add comment repo &amp; service, view for single page display &amp; add comments, need to fix bug with validating comment's content" comment="add comment repo &amp; service, view for single page display &amp; add comments, need to fix bug with validating comment's content&#10;&#10;(cherry picked from commit 7242f78885f9569520598fab63c3b539932fe81b)">
       <changelist_data name="toczylp" email="piotr.toczylowski@gamil.com" date="1573597465000" />
     </list>
+    <list id="63eb44d9-c2d8-4db9-95f5-ea3a133dadf6" name="rating functionality, fix bug with adding comments" comment="rating functionality, fix bug with adding comments">
+      <changelist_data name="toczylp" email="piotr.toczylowski@gamil.com" date="1573684341000" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,7 +85,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="277">
@@ -214,7 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/NotCorrectFileUploadException.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/coderslab/app/configuration/SecurityInitializer.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/loggedin.jsp" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -605,7 +607,16 @@
       <workItem from="1573374080290" duration="25026000" />
       <workItem from="1573494270811" duration="488000" />
       <workItem from="1573495309161" duration="22201000" />
+      <workItem from="1573684526354" duration="1380000" />
     </task>
+    <task id="LOCAL-00001" summary="rating functionality, fix bug with adding comments">
+      <created>1573685647879</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573685647879</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -622,7 +633,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="25" width="1855" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48970252" visible="true" weight="0.18573798" />
       <window_info id="Structure" order="1" sideWeight="0.50595236" side_tool="true" weight="0.28911" />
@@ -1284,6 +1294,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="30" column="14" lean-forward="true" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="98" column="43" lean-forward="true" selection-start-line="98" selection-start-column="43" selection-end-line="98" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
