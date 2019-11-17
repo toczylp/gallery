@@ -24,7 +24,7 @@
                     <div>
                     <input type="file" name="file" path="pic"/>
                     </div>
-                    <div>
+                        <div>
                         <input type="radio" id="one" name="publicFlag" value="1" checked>
                         <label for="one"><h4>Public</h4></label><br>
                         <input type="radio" id="two" name="publicFlag" value="0">

@@ -41,12 +41,18 @@
                     </div>
                     <div class="container">
                         <form method="post" action="../${singlePicture.getId()}/rate">
+                            <div>
                             <input type="radio" name="rating" value="5">5<input type="radio" name="rating" value="4">4<input type="radio" name="rating" value="3">3<input type="radio" name="rating" value="2">2<input type="radio" name="rating" value="1">1<br>
+                            <c:if test="${alreadyRankedFlag}">
+                                <div class="alert alert-danger" role="alert">You can just rank once every picture</div>
+                            </c:if>
+                            </div>
                             <input type="submit" class="btn btn-primary" value="RATE"/>
                         </form>
                     </div>
                 </div>
             </div>
+            <h1>DD : ${param.alreadyRankedFlag} : DD</h1>
             <div class="row">
                 <c:if test="${commentsList.size() > 0}">
                 <table class="table table-striped">

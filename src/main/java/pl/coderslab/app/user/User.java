@@ -57,6 +57,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Comment> comments;
+
+    @ManyToMany(mappedBy = "userswhoRanked", cascade = CascadeType.REMOVE)
+    private List<Picture> rankedPicture;
     @Max(10)
     private int picsCounter;
 

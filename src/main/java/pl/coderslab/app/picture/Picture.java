@@ -36,6 +36,9 @@ public class Picture {
     @ManyToOne
     private User user;
 
+    @ManyToMany
+    private List<User> userswhoRanked;
+
     @OneToMany(mappedBy = "picture", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
 

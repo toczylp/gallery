@@ -73,6 +73,9 @@
                         <c:if test="${deleteButtonFlag == false}">
                             <a class="page-link" href="/picture/read/all/public/page/${currentPage - 1}">Previous</a>
                         </c:if>
+                        <c:if test="${'third_state'.equals(deleteButtonFlag)}">
+                            <a class="page-link" href="/picture/read/most_viewed/page/${currentPage + 1}">Next</a>
+                        </c:if>
                         </li>
                     </c:if>
                         <c:forEach begin="1" end="${pages}" varStatus="loop">
@@ -86,6 +89,9 @@
                             <c:if test="${deleteButtonFlag == null}">
                                 <a class="page-link" href="/picture/read/all/page/${loop.index}" act>${loop.index}</a>
                             </c:if>
+                            <c:if test="${'third_state'.equals(deleteButtonFlag)}">
+                                <a class="page-link" href="/picture/read/most_viewed/page/${loop.index}" act>${loop.index}</a>
+                            </c:if>
                         </li>
                     </c:forEach>
                     <c:if test="${currentPage == pages}">
@@ -95,14 +101,17 @@
                     </c:if>
                     <c:if test="${currentPage < pages}">
                         <li class="page-item">
+                            <c:if test="${deleteButtonFlag == null}">
+                                <a class="page-link" href="/picture/read/all/page/${currentPage + 1}">Next</a>
+                            </c:if>
                             <c:if test="${deleteButtonFlag == true}">
                                 <a class="page-link" href="/picture/my_gallery/page/${currentPage + 1}">Next</a>
                             </c:if>
                             <c:if test="${deleteButtonFlag == false}">
                                 <a class="page-link" href="/picture/read/all/public/page/${currentPage + 1}">Next</a>
                             </c:if>
-                            <c:if test="${deleteButtonFlag == null}">
-                                <a class="page-link" href="/picture/read/all/page/${currentPage + 1}">Next</a>
+                            <c:if test="${'third_state'.equals(deleteButtonFlag)}">
+                                <a class="page-link" href="/picture/read/most_viewed/page/${currentPage + 1}">Next</a>
                             </c:if>
                         </li>
                     </c:if>

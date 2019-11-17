@@ -75,6 +75,9 @@ public class PictureController {
         Picture picture = pictureService.findByIdAndIncreaseViewsQty(id);
         request.getParameter("excessiveCommentLengthValidationError");
 
+        if(request.getParameter("alreadyRankedFlag") != null) {
+            model.addAttribute("alreadyRankedFlag", request.getParameter("alreadyRankedFlag"));
+        }
         if(request.getParameter("excessiveCommentLengthValidationError") != null) {
             model.addAttribute("error", request.getParameter("excessiveCommentLengthValidationError"));
         }
@@ -102,8 +105,15 @@ public class PictureController {
     public String rate(@PathVariable Long id, Model model, HttpServletRequest request, Principal principal) throws UserNotFoundException {
 
         String rate = request.getParameter("rating");
-        int rateAsInt = Integer.parseInt(rate);
-        pictureService.rateAndDecreaseViewsQtyByOne(rateAsInt, id);
+        int rateAsInt = 0;
+        if(rate != null) {
+            rateAsInt = Integer.parseInt(rate);
+        }
+        boolean alreadyRankedFlag = pictureService.rate(rateAsInt, id, principal.getName());
+        if(!alreadyRankedFlag) {
+            model.addAttribute("alreadyRankedFlag", !alreadyRankedFlag);
+        }
+        pictureService.decreaseViewsQtybyOne(id);
         return "redirect:../read/" + id;
     }
 
@@ -112,6 +122,17 @@ public class PictureController {
 
         List<Picture> encodedPictures = pictureService.findAllPublicPaginable(page);
         model.addAttribute("deleteButtonFlag", false);
+        model.addAttribute("pages", pictureService.totalPagesNoPublic(page));
+        model.addAttribute("pictures", encodedPictures);
+        model.addAttribute("currentPage", page);
+        return "display_picture";
+    }
+
+    @RequestMapping(value = "/read/most_viewed/page/{page}")
+    public String readAllPublicMostViewedPictures(Model model, @PathVariable("page") int page) {
+
+        List<Picture> encodedPictures = pictureService.findAllPaginableOrderedByDirectViewsQty(page);
+        model.addAttribute("deleteButtonFlag", "third_state");
         model.addAttribute("pages", pictureService.totalPagesNoPublic(page));
         model.addAttribute("pictures", encodedPictures);
         model.addAttribute("currentPage", page);

@@ -10,9 +10,10 @@ import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import pl.coderslab.app.user.User;
 import pl.coderslab.app.user.UserNotFoundException;
+import pl.coderslab.app.user.UserService;
 
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -30,10 +31,9 @@ public class PictureService {
 
     private final int PICTURES_IN_PAGE = 6;
     private final int PUBLIC_FLAG = 1;
-
-    private EntityManager entityManager;
     private final PictureRepositoryPageable pictureRepositoryPageable;
     private final PictureRepositoryCustom pictureRepositoryCustom;
+    private final UserService userService;
 
     public void save(String fileName, byte[] pic, Principal principal, int publicFlag) throws NotCorrectFileUploadException, UserNotFoundException {
         pictureRepositoryCustom.save(fileName, pic, principal, publicFlag);
@@ -51,11 +51,19 @@ public class PictureService {
         picture.setDirectDisplayQty(picture.getDirectDisplayQty() - 1);
     }
 
-    public void rateAndDecreaseViewsQtyByOne(int rate, Long id) {
+    public boolean rate(int rate, Long id, String login) throws UserNotFoundException {
         Picture picture = pictureRepositoryCustom.findById(id);
-        picture.setRating((picture.getRating() * picture.getRatesQty() + rate) / (picture.getRatesQty() + 1));
-        picture.setDirectDisplayQty(picture.getDirectDisplayQty() - 1);
-        picture.setRatesQty(picture.getRatesQty() + 1);
+        User userWhoRankedCandidate = userService.findByLogin(login);
+
+        if(!picture.getUserswhoRanked().contains(userWhoRankedCandidate)) {
+            picture.setRating((picture.getRating() * picture.getRatesQty() + rate) / (picture.getRatesQty() + 1));
+            picture.setRatesQty(picture.getRatesQty() + 1);
+            List<User> users = picture.getUserswhoRanked();
+            users.add(userWhoRankedCandidate);
+            picture.setUserswhoRanked(users);
+            return true;
+        }
+        return false;
     }
 
     public List<Picture> findAll() {
@@ -83,6 +91,12 @@ public class PictureService {
     public List<Picture> findAllPaginable(int page) {
 
         Page<Picture> pictures = pictureRepositoryPageable.findAll(new PageRequest(page - 1, PICTURES_IN_PAGE));
+        return getPicturesListPaginable(pictures);
+    }
+
+    public List<Picture> findAllPaginableOrderedByDirectViewsQty(int page) {
+
+        Page<Picture> pictures = pictureRepositoryPageable.findAllByPublicFlagOrderByDirectDisplayQtyDesc(new PageRequest(page - 1, PICTURES_IN_PAGE), PUBLIC_FLAG);
         return getPicturesListPaginable(pictures);
     }
 
