@@ -2,6 +2,7 @@ package pl.coderslab.app.picture;
 
 import com.drew.imaging.ImageProcessingException;
 import lombok.RequiredArgsConstructor;
+import org.dom4j.rule.Mode;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -110,6 +111,7 @@ public class PictureController {
     public String readAllPublicPictures(Model model, @PathVariable("page") int page) {
 
         List<Picture> encodedPictures = pictureService.findAllPublicPaginable(page);
+        model.addAttribute("deleteButtonFlag", false);
         model.addAttribute("pages", pictureService.totalPagesNoPublic(page));
         model.addAttribute("pictures", encodedPictures);
         model.addAttribute("currentPage", page);
@@ -118,11 +120,17 @@ public class PictureController {
 
     @RequestMapping(value = "/my_gallery/page/{page}")
     public String readMyGallery(Model model, @PathVariable("page") int page, Principal principal) {
-
+        model.addAttribute("deleteButtonFlag", true);
         List<Picture> encodedPictures = pictureService.findAllPictureByUserLogin(page, principal.getName());
         model.addAttribute("pages", pictureService.totalPagesNoUserGallery(page,principal.getName()));
         model.addAttribute("pictures", encodedPictures);
         model.addAttribute("currentPage", page);
+        return "display_picture";
+    }
+
+    @GetMapping(value = "/read/latest")
+    public String readLatest(Model model) {
+        model.addAttribute("pictures", pictureService.findLatestSixPublicPictures());
         return "display_picture";
     }
 
@@ -136,12 +144,11 @@ public class PictureController {
         return "display_picture";
     }
 
-    @GetMapping("/{id}/details")
-    public String pictureDetails(@PathVariable Long id, Model model) throws ImageProcessingException, IOException {
-        model.addAttribute("details", pictureService.getExifInfo(id));
-        return "picture_details";
+    @GetMapping(value = "/delete/{id}")
+    public String delet(@PathVariable Long id) {
+        pictureService.deletePicture(id);
+        return "redirect:../my_gallery/page/1";
     }
-
 
     private boolean pictureValidate(byte first, byte second) {
 

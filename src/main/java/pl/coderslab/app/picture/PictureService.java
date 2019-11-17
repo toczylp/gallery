@@ -10,10 +10,10 @@ import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import pl.coderslab.app.user.User;
 import pl.coderslab.app.user.UserNotFoundException;
-import pl.coderslab.app.user.UserService;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,10 +21,7 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
-
-import javax.transaction.Transactional;
 
 @Service
 @Transactional
@@ -34,7 +31,7 @@ public class PictureService {
     private final int PICTURES_IN_PAGE = 6;
     private final int PUBLIC_FLAG = 1;
 
-    private final UserService userService;
+    private EntityManager entityManager;
     private final PictureRepositoryPageable pictureRepositoryPageable;
     private final PictureRepositoryCustom pictureRepositoryCustom;
 
@@ -78,10 +75,19 @@ public class PictureService {
         return getPicturesListPaginable(pictures);
     }
 
+    public List<Picture> findLatestSixPublicPictures() {
+        Page<Picture> pictures = pictureRepositoryPageable.findAllByPublicFlagOrderByCreatedDesc(new PageRequest(0, PICTURES_IN_PAGE), PUBLIC_FLAG);
+        return getPicturesListPaginable(pictures);
+    }
+
     public List<Picture> findAllPaginable(int page) {
 
         Page<Picture> pictures = pictureRepositoryPageable.findAll(new PageRequest(page - 1, PICTURES_IN_PAGE));
         return getPicturesListPaginable(pictures);
+    }
+
+    public void deletePicture(Long id) {
+        pictureRepositoryPageable.deleteById(id);
     }
 
     public List<Picture> getPicturesListPaginable(Page<Picture> pictures) {
@@ -100,6 +106,7 @@ public class PictureService {
     public int totalPagesNoPublic(int page) {
         return pictureRepositoryPageable.findAllByPublicFlag(new PageRequest(page - 1, PICTURES_IN_PAGE), PUBLIC_FLAG).getTotalPages();
     }
+
     public int totalPagesNoUserGallery(int page, String login) {
         return pictureRepositoryPageable.findAllByUserLogin(new PageRequest(page - 1, PICTURES_IN_PAGE), login).getTotalPages();
     }

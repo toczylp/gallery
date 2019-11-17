@@ -19,12 +19,13 @@
     <div class="card">
         <div class="card-body">
             <div class="form-group">
-
                 <form action="/picture/add" method="post" enctype="multipart/form-data">
                     <p>Select image:</p><br>
-                    <input type="file" name="file" path="pic"/><br>
                     <div>
-                        <input type="radio" id="one"name="publicFlag" value="1" checked>
+                    <input type="file" name="file" path="pic"/>
+                    </div>
+                    <div>
+                        <input type="radio" id="one" name="publicFlag" value="1" checked>
                         <label for="one"><h4>Public</h4></label><br>
                         <input type="radio" id="two" name="publicFlag" value="0">
                         <label for="two"><h4>Make it Private</h4></label>

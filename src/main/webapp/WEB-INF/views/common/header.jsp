@@ -9,7 +9,7 @@
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="/load_active">Home</a></li>
-                <li><a href="/add_client">Clients</a></li>
+                <li><a href="/picture/read/latest">Show Latest</a></li>
                 <li><a href="/picture/my_gallery/page/1">Show My Gallery</a></li>
                 <li><a href="/picture/read/all/public/page/1">Read All Public</a></li>
                 <li><a href="/picture/read/all/page/1">Read All</a></li>

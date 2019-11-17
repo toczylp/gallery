@@ -21,7 +21,6 @@
                     <div class="row">
                 </c:if>
                 <div class="col-sm-4">
-                    <h1>${el.getFileName()}</h1>
                     <a href="../../../../../picture/read/${el.getId()}"><img src="data:image/jpeg;base64,${el.getEncodedPic()}" alt="DUPA" width="100%" height="auto"/></a>
                 </div>
                 <c:if test="${status.index % 3 == 2 ||  status.last}">
@@ -33,7 +32,7 @@
                                 <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
                                     <div class="panel-body">
                                         <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
-                                        <p>Upload date: ${pictures[i].getCreated()}    <span class="glyphicon glyphicon-info-sign lg"><a href="/picture/${pictures[i].getId()}/details">More</a><</span></p>
+                                        <p>Upload date: ${pictures[i].getCreated()}<c:if test="${deleteButtonFlag == true}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
                                     </div>
                             </div>
                         </c:forEach>
@@ -46,7 +45,7 @@
                             <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
                             <div class="panel-body">
                                 <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
-                                <p>Upload date: ${pictures[i].getCreated()}    <span class="glyphicon glyphicon-info-sign lg"><a href="/picture/${pictures[i].getId()}/details">More </a></span></p>
+                                <p>Upload date: ${pictures[i].getCreated()}<c:if test="${deleteButtonFlag == true}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
                             </div>
                         </div>
                     </c:forEach>
@@ -56,7 +55,6 @@
                     </div>
                 </c:if>
             </c:forEach>
-
             <nav aria-label="...">
                 <ul class="pagination">
                     <c:if test="${currentPage == 1}">
@@ -66,11 +64,29 @@
                     </c:if>
                     <c:if test="${currentPage > 1}">
                         <li class="page-item">
-                            <a class="page-link" href="/picture/read/all/page/${currentPage - 1}">Previous</a>
+                        <c:if test="${deleteButtonFlag == true}">
+                            <a class="page-link" href="/picture/my_gallery/page/${currentPage - 1}">Previous</a>
+                        </c:if>
+                        <c:if test="${deleteButtonFlag == true}">
+                            <a class="page-link" href="/picture/my_gallery/page/${currentPage - 1}">Previous</a>
+                        </c:if>
+                        <c:if test="${deleteButtonFlag == false}">
+                            <a class="page-link" href="/picture/read/all/public/page/${currentPage - 1}">Previous</a>
+                        </c:if>
                         </li>
                     </c:if>
                         <c:forEach begin="1" end="${pages}" varStatus="loop">
-                        <li class="page-item <c:if test="${currentPage == loop.index}">active</c:if>"><a class="page-link" href="/picture/read/all/page/${loop.index}" act>${loop.index}</a></li>
+                        <li class="page-item <c:if test="${currentPage == loop.index}">active</c:if>">
+                            <c:if test="${deleteButtonFlag == true}">
+                                <a class="page-link" href="/picture/my_gallery/page/${loop.index}" act>${loop.index}</a>
+                            </c:if>
+                            <c:if test="${deleteButtonFlag == false}">
+                                <a class="page-link" href="/picture/read/all/public/page/${loop.index}" act>${loop.index}</a>
+                            </c:if>
+                            <c:if test="${deleteButtonFlag == null}">
+                                <a class="page-link" href="/picture/read/all/page/${loop.index}" act>${loop.index}</a>
+                            </c:if>
+                        </li>
                     </c:forEach>
                     <c:if test="${currentPage == pages}">
                         <li class="page-item disabled">
@@ -79,7 +95,15 @@
                     </c:if>
                     <c:if test="${currentPage < pages}">
                         <li class="page-item">
-                            <a class="page-link" href="/picture/read/all/page/${currentPage + 1}">Next</a>
+                            <c:if test="${deleteButtonFlag == true}">
+                                <a class="page-link" href="/picture/my_gallery/page/${currentPage + 1}">Next</a>
+                            </c:if>
+                            <c:if test="${deleteButtonFlag == false}">
+                                <a class="page-link" href="/picture/read/all/public/page/${currentPage + 1}">Next</a>
+                            </c:if>
+                            <c:if test="${deleteButtonFlag == null}">
+                                <a class="page-link" href="/picture/read/all/page/${currentPage + 1}">Next</a>
+                            </c:if>
                         </li>
                     </c:if>
                 </ul>
