@@ -57,13 +57,15 @@ public class Picture {
     public Picture() {
     }
 
-    public Picture(Long id, String fileName, LocalDate created, String encodedPic, User user, int publicFlag) {
+    public Picture(Long id, String fileName, LocalDate created, String encodedPic, User user, int publicFlag, int directDisplayQty, double rating) {
         this.id = id;
         this.fileName = fileName;
         this.created = created;
         this.encodedPic = encodedPic;
         this.publicFlag = publicFlag;
         this.user = user;
+        this.directDisplayQty = directDisplayQty;
+        this.rating = rating;
     }
 
     public String encodePic() {

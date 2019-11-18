@@ -11,7 +11,7 @@
                 <li><a href="/picture/read/most_viewed/page/1">Most Viewed</a></li>
                 <li><a href="/picture/read/latest">Latest</a></li>
                 <li><a href="/picture/my_gallery/page/1">Show My Gallery</a></li>
-                <li><a href="/picture/read/all/public/page/1">Read All Public</a></li>
+                <li><a href="/picture/all/public/page/1">Read All Public</a></li>
                 <li><a href="/picture/read/all/page/1">Read All</a></li>
                 <li><a href="/picture/add">Add Picture</a></li>
             </ul>

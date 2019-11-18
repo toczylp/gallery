@@ -32,7 +32,9 @@
                                 <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
                                     <div class="panel-body">
                                         <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
-                                        <p>Upload date: ${pictures[i].getCreated()}<c:if test="${deleteButtonFlag == true}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
+                                        <p>Upload date: ${pictures[i].getCreated()}</p>
+                                        <p>Rank: <span class="badge badge-info">${pictures[i].getRating()}</span>Views: <span class="badge badge-info">${pictures[i].getDirectDisplayQty()}</span></p>
+                                        <p><c:if test="${paginationFlag == '3'}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
                                     </div>
                             </div>
                         </c:forEach>
@@ -45,7 +47,9 @@
                             <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
                             <div class="panel-body">
                                 <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
-                                <p>Upload date: ${pictures[i].getCreated()}<c:if test="${deleteButtonFlag == true}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
+                                <p>Upload date: ${pictures[i].getCreated()}</p>
+                                <p>Rank: <span class="badge badge-info">${pictures[i].getRating()}</span>Views: <span class="badge badge-info">${pictures[i].getDirectDisplayQty()}</span></p>
+                                <p><c:if test="${paginationFlag == '3'}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
                             </div>
                         </div>
                     </c:forEach>
@@ -64,32 +68,32 @@
                     </c:if>
                     <c:if test="${currentPage > 1}">
                         <li class="page-item">
-                        <c:if test="${deleteButtonFlag == true}">
+                        <c:if test="${'1'.equals(paginationFlag)}">
+                            <a class="page-link" href="/picture/read/all/page/${currentPage - 1}">Previous</a>
+                        </c:if>
+                        <c:if test="${'2'.equals(paginationFlag)}">
+                            <a class="page-link" href="/picture/all/public/page/${currentPage - 1}">Previous</a>
+                        </c:if>
+                        <c:if test="${'3'.equals(paginationFlag)}">
                             <a class="page-link" href="/picture/my_gallery/page/${currentPage - 1}">Previous</a>
                         </c:if>
-                        <c:if test="${deleteButtonFlag == true}">
-                            <a class="page-link" href="/picture/my_gallery/page/${currentPage - 1}">Previous</a>
-                        </c:if>
-                        <c:if test="${deleteButtonFlag == false}">
-                            <a class="page-link" href="/picture/read/all/public/page/${currentPage - 1}">Previous</a>
-                        </c:if>
-                        <c:if test="${'third_state'.equals(deleteButtonFlag)}">
+                        <c:if test="${'4'.equals(paginationFlag)}">
                             <a class="page-link" href="/picture/read/most_viewed/page/${currentPage + 1}">Next</a>
                         </c:if>
                         </li>
                     </c:if>
                         <c:forEach begin="1" end="${pages}" varStatus="loop">
                         <li class="page-item <c:if test="${currentPage == loop.index}">active</c:if>">
-                            <c:if test="${deleteButtonFlag == true}">
-                                <a class="page-link" href="/picture/my_gallery/page/${loop.index}" act>${loop.index}</a>
-                            </c:if>
-                            <c:if test="${deleteButtonFlag == false}">
-                                <a class="page-link" href="/picture/read/all/public/page/${loop.index}" act>${loop.index}</a>
-                            </c:if>
-                            <c:if test="${deleteButtonFlag == null}">
+                            <c:if test="${'1'.equals(paginationFlag)}">
                                 <a class="page-link" href="/picture/read/all/page/${loop.index}" act>${loop.index}</a>
                             </c:if>
-                            <c:if test="${'third_state'.equals(deleteButtonFlag)}">
+                            <c:if test="${'2'.equals(paginationFlag)}">
+                                <a class="page-link" href="/picture/all/public/page/${loop.index}" act>${loop.index}</a>
+                            </c:if>
+                            <c:if test="${'3'.equals(paginationFlag)}">
+                                <a class="page-link" href="/picture/my_gallery/page/${loop.index}" act>${loop.index}</a>
+                            </c:if>
+                            <c:if test="${'4'.equals(paginationFlag)}">
                                 <a class="page-link" href="/picture/read/most_viewed/page/${loop.index}" act>${loop.index}</a>
                             </c:if>
                         </li>
@@ -101,16 +105,16 @@
                     </c:if>
                     <c:if test="${currentPage < pages}">
                         <li class="page-item">
-                            <c:if test="${deleteButtonFlag == null}">
+                            <c:if test="${'1'.equals(paginationFlag)}">
                                 <a class="page-link" href="/picture/read/all/page/${currentPage + 1}">Next</a>
                             </c:if>
-                            <c:if test="${deleteButtonFlag == true}">
+                            <c:if test="${'2'.equals(paginationFlag)}">
+                                <a class="page-link" href="/picture/all/public/page/${currentPage + 1}">Next</a>
+                            </c:if>
+                            <c:if test="${'3'.equals(paginationFlag)}">
                                 <a class="page-link" href="/picture/my_gallery/page/${currentPage + 1}">Next</a>
                             </c:if>
-                            <c:if test="${deleteButtonFlag == false}">
-                                <a class="page-link" href="/picture/read/all/public/page/${currentPage + 1}">Next</a>
-                            </c:if>
-                            <c:if test="${'third_state'.equals(deleteButtonFlag)}">
+                            <c:if test="${'4'.equals(paginationFlag)}">
                                 <a class="page-link" href="/picture/read/most_viewed/page/${currentPage + 1}">Next</a>
                             </c:if>
                         </li>

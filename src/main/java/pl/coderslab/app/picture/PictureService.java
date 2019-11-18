@@ -107,7 +107,7 @@ public class PictureService {
     public List<Picture> getPicturesListPaginable(Page<Picture> pictures) {
         pictures.stream().forEach(p->Hibernate.initialize(p.getUser()));
         List<Picture> listWithEncodedPictures = pictures.stream().map(p -> {
-            Picture picture = new Picture(p.getId(), p.getFileName(), p.getCreated(), p.encodePic(), p.getUser(), p.getPublicFlag());
+            Picture picture = new Picture(p.getId(), p.getFileName(), p.getCreated(), p.encodePic(), p.getUser(), p.getPublicFlag(), p.getDirectDisplayQty(), p.getRating());
             return picture;
         }).collect(Collectors.toList());
         return listWithEncodedPictures;

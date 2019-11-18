@@ -52,7 +52,6 @@
                     </div>
                 </div>
             </div>
-            <h1>DD : ${param.alreadyRankedFlag} : DD</h1>
             <div class="row">
                 <c:if test="${commentsList.size() > 0}">
                 <table class="table table-striped">
