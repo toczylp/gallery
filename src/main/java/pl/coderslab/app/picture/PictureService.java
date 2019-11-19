@@ -134,6 +134,10 @@ public class PictureService {
         return pictureRepositoryPageable.findAllByPublicFlag(new PageRequest(page - 1, PICTURES_IN_PAGE), PUBLIC_FLAG).getTotalPages();
     }
 
+    public int totalPagesNoPublicOfGivenCategory(int page, String category) {
+        return pictureRepositoryPageable.findAllByPublicFlagAndCategoryName(new PageRequest(page - 1, PICTURES_IN_PAGE), PUBLIC_FLAG, category).getTotalPages();
+    }
+
     public int totalPagesNoUserGallery(int page, String login) {
         return pictureRepositoryPageable.findAllByUserLogin(new PageRequest(page - 1, PICTURES_IN_PAGE), login).getTotalPages();
     }

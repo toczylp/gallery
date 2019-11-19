@@ -20,7 +20,7 @@
         <div class="container">
             <c:forEach items="${pictures}" var="el" varStatus="status">
                 <c:if test="${status.index % 3 == 0}">
-                <div class="row">
+                    <div class="row">
                 </c:if>
                 <div class="col-sm-4">
                     <a href="../../../../../picture/read/${el.getId()}"><img src="data:image/jpeg;base64,${el.getEncodedPic()}" alt="DUPA" width="100%" height="auto"/></a>
@@ -29,24 +29,23 @@
                     </div>
                     <div class="row">
                         <c:if test="${status.index < 3}">
-                            <c:forEach var="i" begin="0" end="${status.index}" varStatus="status2" step="1">
-                                <div class="col-sm-4 panel panel-info">
-                                    <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
-                                        <div class="panel-body">
-                                            <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
-                                            <p>Upload date: ${pictures[i].getCreated()}</p>
-                                            <p>Rank: <span class="badge badge-info">${pictures[i].getRating()}</span>Views: <span class="badge badge-info">${pictures[i].getDirectDisplayQty()}</span></p>
-                                            <p><c:if test="${paginationFlag == '3'}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
-                                        </div>
-                                </div>
-                            </c:forEach>
-                        </c:if>
+                        <c:forEach var="i" begin="0" end="${status.index}" varStatus="status2" step="1">
+                            <div class="col-sm-4 panel panel-info">
+                                <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
+                                    <div class="panel-body">
+                                        <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
+                                        <p>Upload date: ${pictures[i].getCreated()}</p>
+                                        <p>Rank: <span class="badge badge-info">${pictures[i].getRating()}</span>Views: <span class="badge badge-info">${pictures[i].getDirectDisplayQty()}</span></p>
+                                        <p><c:if test="${paginationFlag == '3'}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
+                                    </div>
+                            </div>
+                        </c:forEach>
                     </div>
-
+                        </c:if>
                 <div class="row">
                     <c:if test="${status.index >= 3}">
                     <c:forEach var="i" begin="3" end="${status.index}" varStatus="status2" step="1">
-                        <div class="col-sm-4 panel panel-info">
+                        <div class="col-sm-4 panel panel-info border-primary">
                             <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
                             <div class="panel-body">
                                 <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>

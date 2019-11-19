@@ -188,7 +188,7 @@ public class PictureController {
     @RequestMapping(value = "read/category/{category}/page/{page}")
     public String readAllPicturesByCategory(@PathVariable int page, @PathVariable String category, Model model) {
         List<Picture> encodedPictures = pictureService.findAllPublicByCategoryPaginable(page, category);
-        model.addAttribute("pages", pictureService.totalPagesNo(page));
+        model.addAttribute("pages", pictureService.totalPagesNoPublicOfGivenCategory(page, category));
         model.addAttribute("pictures", encodedPictures);
         model.addAttribute("currentPage", page);
         model.addAttribute("category", category);
