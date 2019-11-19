@@ -14,4 +14,6 @@ public interface PictureRepositoryPageable extends PagingAndSortingRepository<Pi
     Page<Picture> findAllByUserLogin(Pageable pageable, String login);
     Page<Picture> findAllByPublicFlagOrderByCreatedDesc(Pageable pageable, int publicFlag);
     Page<Picture> findAllByPublicFlagOrderByDirectDisplayQtyDesc(Pageable pageable, int publicFlag);
+    Page<Picture> findAllByPublicFlagAndCategoryName(Pageable pageable, int publicFlag, String category);
+    Page<Picture> findAllByPublicFlagOrderByRatingDesc(Pageable pageable, int publicFlag);
 }

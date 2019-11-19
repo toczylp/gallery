@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pl.coderslab.app.category.Category;
+import pl.coderslab.app.category.CategoryService;
 import pl.coderslab.app.comment.Comment;
 import pl.coderslab.app.comment.CommentService;
 import pl.coderslab.app.user.UserNotFoundException;
@@ -28,6 +30,7 @@ public class PictureController {
 
     private final PictureService pictureService;
     private final CommentService commentService;
+    private final CategoryService categoryService;
     private final Map<String, String> ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES = Map.of(
             "JPEG", "ffd8", "PNG", "8950", "BMP", "424d", "TIFF", "4949"
     );
@@ -40,30 +43,36 @@ public class PictureController {
     }
 
     @PostMapping("/add")
-    public String addPicture(@RequestParam("file") MultipartFile file, @RequestParam int publicFlag, Model model, Principal principal) {
+    public String addPicture(@RequestParam("file") MultipartFile file, @RequestParam int publicFlag, @RequestParam String category, Model model, Principal principal) {
 
-            String fileName = file.getOriginalFilename();
-            try {
-                byte[] bytePic = file.getBytes();
-                if (!pictureValidate(bytePic[0], bytePic[1])) {
-                    throw new NotCorrectFileUploadException();
-                }
-                pictureService.save(fileName, bytePic, principal, publicFlag);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ArrayIndexOutOfBoundsException e) {
-                e.getStackTrace();
-                e.getMessage();
-                model.addAttribute("error", "You must select the image to upload");
-                return "add_picture";
+        String fileName = file.getOriginalFilename();
+        Category categoryDb = categoryService.readCategoryByName(category);
 
-            } catch (NotCorrectFileUploadException e) {
-                e.printStackTrace();
-                model.addAttribute("error", ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES.keySet());
-                return "add_picture";
-            } catch (UserNotFoundException e) {
-                e.printStackTrace();
+        if (categoryDb == null) {
+            model.addAttribute("noCategoryChosenError", "You must choose the category");
+            return "add_picture";
+        }
+
+        try {
+            byte[] bytePic = file.getBytes();
+            if (!pictureValidate(bytePic[0], bytePic[1])) {
+                throw new NotCorrectFileUploadException();
             }
+            pictureService.save(fileName, bytePic, principal, publicFlag, categoryDb);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.getStackTrace();
+            e.getMessage();
+            model.addAttribute("error", "You must select the image to upload");
+            return "add_picture";
+        } catch (NotCorrectFileUploadException e) {
+            e.printStackTrace();
+            model.addAttribute("error", ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES.keySet());
+            return "add_picture";
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
         return "redirect:add";
 
     }
@@ -138,6 +147,17 @@ public class PictureController {
         return "display_picture";
     }
 
+    @RequestMapping(value = "/read/top_rated/page/{page}")
+    public String readAllPublicTopRatedPictures(Model model, @PathVariable("page") int page) {
+
+        List<Picture> encodedPictures = pictureService.findAllPaginableOrderedByRating(page);
+        model.addAttribute("paginationFlag", "6");
+        model.addAttribute("pages", pictureService.totalPagesNoPublic(page));
+        model.addAttribute("pictures", encodedPictures);
+        model.addAttribute("currentPage", page);
+        return "display_picture";
+    }
+
     @RequestMapping(value = "/my_gallery/page/{page}")
     public String readMyGallery(Model model, @PathVariable("page") int page, Principal principal) {
         model.addAttribute("paginationFlag", "3");
@@ -165,6 +185,17 @@ public class PictureController {
         return "display_picture";
     }
 
+    @RequestMapping(value = "read/category/{category}/page/{page}")
+    public String readAllPicturesByCategory(@PathVariable int page, @PathVariable String category, Model model) {
+        List<Picture> encodedPictures = pictureService.findAllPublicByCategoryPaginable(page, category);
+        model.addAttribute("pages", pictureService.totalPagesNo(page));
+        model.addAttribute("pictures", encodedPictures);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("category", category);
+        model.addAttribute("paginationFlag", "5");
+        return "display_picture";
+    }
+
     @GetMapping(value = "/delete/{id}")
     public String delet(@PathVariable Long id) {
         pictureService.deletePicture(id);
@@ -177,5 +208,10 @@ public class PictureController {
             return true;
         }
         else return false;
+    }
+
+    @ModelAttribute(name = "categories")
+    public List<Category> categories() {
+        return categoryService.readAllCategories();
     }
 }

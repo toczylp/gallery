@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.security.crypto.codec.Base64;
+import pl.coderslab.app.category.Category;
 import pl.coderslab.app.comment.Comment;
 import pl.coderslab.app.user.User;
 
@@ -41,6 +42,9 @@ public class Picture {
 
     @OneToMany(mappedBy = "picture", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
+
+    @ManyToOne
+    private Category category;
 
     @NotNull
     private int publicFlag;

@@ -1,6 +1,7 @@
 package pl.coderslab.app.picture;
 
 import org.springframework.stereotype.Repository;
+import pl.coderslab.app.category.Category;
 import pl.coderslab.app.user.UserNotFoundException;
 
 import javax.transaction.Transactional;
@@ -12,7 +13,7 @@ import java.util.List;
 @Transactional
 public interface  PictureRepositoryCustom {
 
-    void save(String fileName, byte[] pic, Principal principal, int publicFlag) throws UserNotFoundException;
+    void save(String fileName, byte[] pic, Principal principal, int publicFlag, Category category) throws UserNotFoundException;
 
     Picture findById(Long id);
 

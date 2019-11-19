@@ -6,9 +6,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <title>Title</title>
 </head>
 <body>
@@ -78,7 +80,13 @@
                             <a class="page-link" href="/picture/my_gallery/page/${currentPage - 1}">Previous</a>
                         </c:if>
                         <c:if test="${'4'.equals(paginationFlag)}">
-                            <a class="page-link" href="/picture/read/most_viewed/page/${currentPage + 1}">Next</a>
+                            <a class="page-link" href="/picture/read/most_viewed/page/${currentPage - 1}">Next</a>
+                        </c:if>
+                        <c:if test="${'5'.equals(paginationFlag)}">
+                            <a class="page-link" href="/picture/read/category/${category}/page/${currentPage - 1}">Next</a>
+                        </c:if>
+                        <c:if test="${'6'.equals(paginationFlag)}">
+                            <a class="page-link" href="/picture/read/top_rated/page/${currentPage + 1}">Next</a>
                         </c:if>
                         </li>
                     </c:if>
@@ -95,6 +103,12 @@
                             </c:if>
                             <c:if test="${'4'.equals(paginationFlag)}">
                                 <a class="page-link" href="/picture/read/most_viewed/page/${loop.index}" act>${loop.index}</a>
+                            </c:if>
+                            <c:if test="${'5'.equals(paginationFlag)}">
+                                <a class="page-link" href="/picture/read/category/${category}/page/${loop.index}" act>${loop.index}</a>
+                            </c:if>
+                            <c:if test="${'6'.equals(paginationFlag)}">
+                                <a class="page-link" href="/picture/read/top_rated/page/${loop.index}" act>${loop.index}</a>
                             </c:if>
                         </li>
                     </c:forEach>
@@ -116,6 +130,12 @@
                             </c:if>
                             <c:if test="${'4'.equals(paginationFlag)}">
                                 <a class="page-link" href="/picture/read/most_viewed/page/${currentPage + 1}">Next</a>
+                            </c:if>
+                            <c:if test="${'5'.equals(paginationFlag)}">
+                                <a class="page-link" href="/picture/read/category/${category}/page/${currentPage + 1}">Next</a>
+                            </c:if>
+                            <c:if test="${'6'.equals(paginationFlag)}">
+                                <a class="page-link" href="/picture/read/top_rated/page/${currentPage + 1}">Next</a>
                             </c:if>
                         </li>
                     </c:if>

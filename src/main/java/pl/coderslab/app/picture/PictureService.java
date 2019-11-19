@@ -10,6 +10,9 @@ import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import pl.coderslab.app.category.Category;
+import pl.coderslab.app.category.CategoryService;
 import pl.coderslab.app.user.User;
 import pl.coderslab.app.user.UserNotFoundException;
 import pl.coderslab.app.user.UserService;
@@ -35,8 +38,8 @@ public class PictureService {
     private final PictureRepositoryCustom pictureRepositoryCustom;
     private final UserService userService;
 
-    public void save(String fileName, byte[] pic, Principal principal, int publicFlag) throws NotCorrectFileUploadException, UserNotFoundException {
-        pictureRepositoryCustom.save(fileName, pic, principal, publicFlag);
+    public void save(String fileName, byte[] pic, Principal principal, int publicFlag, Category category) throws NotCorrectFileUploadException, UserNotFoundException {
+        pictureRepositoryCustom.save(fileName, pic, principal, publicFlag, category);
     }
 
     public Picture findByIdAndIncreaseViewsQty(Long id) {
@@ -78,6 +81,11 @@ public class PictureService {
         return getPicturesListPaginable(pictures);
     }
 
+    public List<Picture> findAllPublicByCategoryPaginable(int page, String categoryName) {
+        Page<Picture> pictures = pictureRepositoryPageable.findAllByPublicFlagAndCategoryName(new PageRequest(page - 1, PICTURES_IN_PAGE), PUBLIC_FLAG, categoryName);
+        return getPicturesListPaginable(pictures);
+    }
+
     public List<Picture> findAllPictureByUserLogin(int page, String login) {
         Page<Picture> pictures = pictureRepositoryPageable.findAllByUserLogin(new PageRequest(page - 1, PICTURES_IN_PAGE), login);
         return getPicturesListPaginable(pictures);
@@ -97,6 +105,11 @@ public class PictureService {
     public List<Picture> findAllPaginableOrderedByDirectViewsQty(int page) {
 
         Page<Picture> pictures = pictureRepositoryPageable.findAllByPublicFlagOrderByDirectDisplayQtyDesc(new PageRequest(page - 1, PICTURES_IN_PAGE), PUBLIC_FLAG);
+        return getPicturesListPaginable(pictures);
+    }
+    public List<Picture> findAllPaginableOrderedByRating(int page) {
+
+        Page<Picture> pictures = pictureRepositoryPageable.findAllByPublicFlagOrderByRatingDesc(new PageRequest(page - 1, PICTURES_IN_PAGE), PUBLIC_FLAG);
         return getPicturesListPaginable(pictures);
     }
 
@@ -147,5 +160,4 @@ public class PictureService {
         }
         return exif;
     }
-
 }

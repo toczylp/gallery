@@ -7,6 +7,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
+import pl.coderslab.app.category.Category;
 import pl.coderslab.app.user.UserNotFoundException;
 import pl.coderslab.app.user.UserService;
 
@@ -26,7 +27,7 @@ public class PictureRepositoryCustomImpl implements PictureRepositoryCustom {
     private final UserService userService;
 
     @Override
-    public void save(String fileName, byte[] pic, Principal principal, int publicFlag) throws UserNotFoundException {
+    public void save(String fileName, byte[] pic, Principal principal, int publicFlag, Category category) throws UserNotFoundException {
 
         Picture picture = new Picture();
         picture.setUser(userService.findByLogin(principal.getName()));
@@ -34,6 +35,7 @@ public class PictureRepositoryCustomImpl implements PictureRepositoryCustom {
         picture.prePersist();
         picture.setPic(pic);
         picture.setPublicFlag(publicFlag);
+        picture.setCategory(category);
         entityManager.persist(picture);
     }
 
