@@ -62,7 +62,7 @@ public class UserController {
         return "user_details";
     }
     @PostMapping("/user/details")
-    public String userUpdate(@ModelAttribute /*@Valid */User user, BindingResult result, Model model) {
+    public String userUpdate(@ModelAttribute @Valid User user, BindingResult result, Model model) {
 
         try {
             userServiceImpl.update2(user);
@@ -75,8 +75,8 @@ public class UserController {
     }
 
     @GetMapping("/user/delete/{id}")
-    public String deleteUser(@PathVariable Long id, HttpSession session) {
-        userServiceImpl.deleteByUserId(id);
+    public String deleteUser(@ModelAttribute User user, HttpSession session) {
+        userServiceImpl.deleteByUserId(user.getId());
 
         return "redirect:../../perform_logout";
     }

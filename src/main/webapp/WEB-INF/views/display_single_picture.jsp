@@ -15,6 +15,7 @@
 </head>
 <body>
 <jsp:include page="common/header.jsp"/>
+<div class="container"></div>
 <div class="container">
         <div class="container">
             <div class="row">
@@ -80,6 +81,7 @@
             </div>
         </div>
 </div>
+
 <jsp:include page="common/footer.jsp"/>
 </body>
 </html>

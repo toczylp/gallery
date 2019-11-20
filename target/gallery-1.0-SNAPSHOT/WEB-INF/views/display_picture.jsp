@@ -15,6 +15,7 @@
 </head>
 <body>
 <jsp:include page="common/header.jsp"/>
+<div class="container"><br></div>
 <div class="container">
     <c:if test="${pictures != null}">
         <div class="container">
@@ -30,7 +31,7 @@
                     <div class="row">
                         <c:if test="${status.index < 3}">
                             <c:forEach var="i" begin="0" end="${status.index}" varStatus="status2" step="1">
-                                <div class="col-sm-4 panel panel-info">
+                                <div class="col-sm-4 panel panel-info border border-secondary">
                                     <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
                                         <div class="panel-body">
                                             <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
@@ -46,7 +47,7 @@
                 <div class="row">
                     <c:if test="${status.index >= 3}">
                     <c:forEach var="i" begin="3" end="${status.index}" varStatus="status2" step="1">
-                        <div class="col-sm-4 panel panel-info">
+                        <div class="col-sm-4 panel panel-info border border-secondary">
                             <div class="panel-heading"><p>File name: ${pictures[i].getFileName()}</p></div>
                             <div class="panel-body">
                                 <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
@@ -144,7 +145,7 @@
             </nav>
         </div>
     </c:if>
-</div>
+</>
 <jsp:include page="common/footer.jsp"/>
 </body>
 </html>

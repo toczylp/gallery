@@ -21,10 +21,9 @@
         <div class="card-body">
             <div class="form-group">
                 <form:form method="post" modelAttribute="user">
-                    <form:input path="id" class="hidden"/>
+                    <form:input path="id" class="invisible"/><br>
                     Created:<br>
-                    <input value="${user.getCreated()}" disabled="true"/><br>
-                    <form:input path="created" class="hidden"/><br>
+                    <form:input path="created" readonly="true"/><br>
                     <form:errors path="created" element="div" class="alert alert-danger" role="alert"/>
                     First Name:<br>
                     <form:input path="firstName"/><br>
@@ -33,19 +32,16 @@
                     <form:input path="lastName"/><br>
                     <form:errors path="lastName" element="div" class="alert alert-danger" role="alert"/>
                     Login:<br>
-                    <input value="${user.getLogin()}" disabled="true"/><br>
-                    <form:input path="login" class="hidden"/>
+                    <form:input path="login" disabled="true"/><br>
                     <form:errors path="login" element="div" class="alert alert-danger" role="alert"/>
                     Date of Birth:<br>
-                    <input value="${user.getDateOfBirth()}" disabled="true"/><br>
-                    <form:input path="dateOfBirth" type="date" class="hidden"/>
+                    <form:input path="dateOfBirth" type="date" readonly="true"/><br>
                     <form:errors path="dateOfBirth" element="div" class="alert alert-danger" role="alert"/>
                     Mail:<br>
-                    <input value="${user.getMail()}" disabled="true"/>
-                    <form:input path="mail" class="hidden"/><br>
+                    <form:input path="mail" readonly="true"/><br>
                     <form:errors path="mail" element="div" class="alert alert-danger" role="alert"/>
                     Pictures q-ty:<br>
-                    <form:input path="picsCounter" disabled="true"/><br>
+                    <form:input path="picsCounter" readonly="true"/><br>
                     <form:errors path="picsCounter" element="div" class="alert alert-danger" role="alert"/>
                     <input type="submit" class="btn btn-primary" value="UPDATE"/>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete">DELETE</button>
