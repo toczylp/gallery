@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         Role userRole = roleRepository.findByRoleName("ROLE_USER");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
     public User findByLogin(String login) throws UserNotFoundException {
@@ -45,19 +45,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    public void update(String newFirstName, String newLastName, Long id) {
-        userRepository.customUpdate(newFirstName, newLastName, id);
-    }
-
-
     public void update2(User user) throws UserNotFoundException {
         User userDB = userRepository.findById(user.getId()).orElseThrow(UserNotFoundException::new);
         userDB.setFirstName(user.getFirstName());
         userDB.setLastName(user.getLastName());
     }
-    public void delete(User user) {
-        userRepository.deleteById(user.getId());
-    }
+
     public void deleteByUserId(Long id) {
         userRepository.deleteById(id);
     }

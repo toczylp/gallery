@@ -5,7 +5,6 @@ import pl.coderslab.app.category.Category;
 import pl.coderslab.app.user.UserNotFoundException;
 
 import javax.transaction.Transactional;
-import java.io.File;
 import java.security.Principal;
 import java.util.List;
 

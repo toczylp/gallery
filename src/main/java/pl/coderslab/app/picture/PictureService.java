@@ -10,7 +10,6 @@ import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import pl.coderslab.app.category.Category;
 import pl.coderslab.app.category.CategoryService;
 import pl.coderslab.app.user.User;
@@ -72,13 +71,6 @@ public class PictureService {
             return true;
         }
         return false;
-    }
-
-    public List<Picture> findAll() {
-        return pictureRepositoryCustom.findAll();
-    }
-    public List<Picture> findAllWithUser() {
-        return pictureRepositoryCustom.findAllWithUser();
     }
 
     public List<Picture> findAllPublicPaginable(int page) {

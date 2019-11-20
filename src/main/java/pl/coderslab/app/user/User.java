@@ -11,12 +11,11 @@ import pl.coderslab.app.user.customValidators.UniqueMail;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Set;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
