@@ -19,4 +19,8 @@ public class CategoryService {
     public Category readCategoryByName(String name) {
         return categoryRepository.findByName(name);
     }
+
+    public void save(Category category) {
+        categoryRepository.save(category);
+    }
 }
