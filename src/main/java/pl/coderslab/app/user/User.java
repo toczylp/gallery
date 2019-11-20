@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.app.comment.Comment;
 import pl.coderslab.app.picture.Picture;
 import pl.coderslab.app.role.Role;
+import pl.coderslab.app.user.customValidators.AgeOver18;
 import pl.coderslab.app.user.customValidators.UniqueLogin;
 import pl.coderslab.app.user.customValidators.UniqueMail;
 
@@ -44,6 +45,7 @@ public class User {
     private Set<Role> roles;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @AgeOver18
     private LocalDate dateOfBirth;
 
     private LocalDate created;

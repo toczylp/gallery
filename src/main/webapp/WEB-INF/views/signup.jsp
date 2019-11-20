@@ -32,6 +32,7 @@
                     <form:errors path="password" element="div" class="alert alert-danger" role="alert"/>
                     Date of Birth:<br>
                     <form:input path="dateOfBirth" type="date"/>
+                    <form:errors path="dateOfBirth" element="div" class="alert alert-danger" role="alert"/>
                     <input type="submit" class="btn btn-primary" value="SIGNUP"/>
                 </form:form>
             </div>
