@@ -8,14 +8,23 @@
   <component name="ChangeListManager">
     <list default="true" id="f03ccd7e-bea3-4844-8dcd-15349bb41b90" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/add_picture.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/add_picture.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_picture.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_picture.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_picture2.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_single_picture.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/display_single_picture.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/loggedin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/loggedin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/logout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/picture_details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/picture_details.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/signup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user_delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user_delete.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user_details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user_details.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/add_picture.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/add_picture.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/display_picture.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/display_picture.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/loggedin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/loggedin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/signup.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,10 +78,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
         <option value="HTML File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -298,7 +307,7 @@
       <workItem from="1573674175548" duration="2641000" />
       <workItem from="1573848284255" duration="1569000" />
       <workItem from="1573851298407" duration="24428000" />
-      <workItem from="1574105924146" duration="30259000" />
+      <workItem from="1574105924146" duration="31616000" />
     </task>
     <servers />
   </component>
