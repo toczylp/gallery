@@ -62,7 +62,7 @@ public class User {
 
     @ManyToMany(mappedBy = "userswhoRanked", cascade = CascadeType.REMOVE)
     private List<Picture> rankedPicture;
-    @Max(10)
+
     private int picsCounter;
 
     @PrePersist

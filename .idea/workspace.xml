@@ -7,12 +7,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f03ccd7e-bea3-4844-8dcd-15349bb41b90" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/customValidators/AgeOver18.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/customValidators/AgeOver18Validator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/category/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/category/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/sql/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/sql/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/common/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/app/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/picture/PictureService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/app/picture/PictureService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/app/user/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/configuration/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/configuration/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/picture/PictureService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/picture/PictureService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/user/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/common/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/views/common/header.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +67,13 @@
         <item name="galleryDB: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="Picture: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@gallery" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="galleryDB: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="User: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -68,9 +88,9 @@
       <list>
         <option value="Interface" />
         <option value="HTML File" />
-        <option value="Jsp File" />
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -252,12 +272,17 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@d08e2174" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3db8e61c" type="7427dc5b:ServiceModel$ServiceGroupNode" />
             </path>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@d08e2174" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@208f413c" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3db8e61c" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@219e220d" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@3db8e61c" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5767d409" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -296,7 +321,7 @@
       <workItem from="1573674175548" duration="2641000" />
       <workItem from="1573848284255" duration="1569000" />
       <workItem from="1573851298407" duration="24428000" />
-      <workItem from="1574105924146" duration="32995000" />
+      <workItem from="1574105924146" duration="38890000" />
     </task>
     <servers />
   </component>
@@ -324,32 +349,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserController.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserController.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/UserController.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/user/customValidators/AgeOver18Validator.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

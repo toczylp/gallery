@@ -9,6 +9,7 @@
             <div class="navbar-header">
                 <span class="navbar-brand bottomNav">Online Gallery</span>
             </div>
+            <sec:authorize access="!hasRole('admin')">
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -44,6 +45,19 @@
                     </li>
                 </ul>
             </div>
+            </sec:authorize>
+            <sec:authorize access="hasRole('admin')">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/read/all">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/category/read/all">Categories</a>
+                        </li>
+                    </ul>
+                </div>
+            </sec:authorize>
             <div>
                 <ul class="navbar-nav navbar-right">
                     <sec:authorize access="!isAuthenticated()">
@@ -51,7 +65,9 @@
                         <li><a href="/login"> <i class="fas fa-sign-in-alt"></i> Login </a></li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
-                        <li><a href="/user/details"><i class="far fa-user-circle"></i> User  </a></li>
+                        <sec:authorize access="!hasRole('admin')">
+                            <li><a href="/user/details"><i class="far fa-user-circle"></i> User  </a></li>
+                        </sec:authorize>
                         <li><a href="/perform_logout"><i class="fas fa-sign-out-alt"></i> Logout </a></li>
                     </sec:authorize>
                 </ul>

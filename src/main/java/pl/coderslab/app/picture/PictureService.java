@@ -37,9 +37,14 @@ public class PictureService {
     private final PictureRepositoryPageable pictureRepositoryPageable;
     private final PictureRepositoryCustom pictureRepositoryCustom;
     private final UserService userService;
+    private final CategoryService categoryService;
 
     public void save(String fileName, byte[] pic, Principal principal, int publicFlag, Category category) throws NotCorrectFileUploadException, UserNotFoundException {
         pictureRepositoryCustom.save(fileName, pic, principal, publicFlag, category);
+        User userToUpdate = userService.findByLogin(principal.getName());
+        userToUpdate.setPicsCounter(userToUpdate.getPicsCounter() + 1);
+        Category categoryToUpdate = categoryService.readCategoryByName(category.getName());
+        categoryToUpdate.setPicsQty(categoryToUpdate.getPicsQty() + 1);
     }
 
     public Picture findByIdAndIncreaseViewsQty(Long id) {
@@ -114,6 +119,11 @@ public class PictureService {
     }
 
     public void deletePicture(Long id) {
+        Picture pictureToDelete = pictureRepositoryCustom.findById(id);
+        Category categoryToUpdate = pictureToDelete.getCategory();
+        categoryToUpdate.setPicsQty(categoryToUpdate.getPicsQty() - 1);
+        User userToUpdate = pictureToDelete.getUser();
+        userToUpdate.setPicsCounter(userToUpdate.getPicsCounter() - 1);
         pictureRepositoryPageable.deleteById(id);
     }
 

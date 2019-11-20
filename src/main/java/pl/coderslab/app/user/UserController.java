@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.http.HttpSession;
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.security.Principal;
@@ -62,7 +62,7 @@ public class UserController {
         return "user_details";
     }
     @PostMapping("/user/details")
-    public String userUpdate(@ModelAttribute @Valid User user, BindingResult result, Model model) {
+    public String userUpdate(@ModelAttribute @Valid User user) {
 
         try {
             userServiceImpl.update2(user);
@@ -75,9 +75,21 @@ public class UserController {
     }
 
     @GetMapping("/user/delete/{id}")
-    public String deleteUser(@ModelAttribute User user, HttpSession session) {
+    public String deleteUser(@ModelAttribute User user) {
         userServiceImpl.deleteByUserId(user.getId());
 
         return "redirect:../../perform_logout";
+    }
+
+    @GetMapping("/user/deleteByAdmin/{id}")
+    public String deleteByAdmin(@PathVariable Long id) {
+        userServiceImpl.deleteByUserId(id);
+        return "redirect:../../user/read/all";
+    }
+
+    @GetMapping("/user/read/all")
+    public String readAllUsers(Model model) {
+        model.addAttribute("users", userServiceImpl.findAll());
+        return "users";
     }
 }

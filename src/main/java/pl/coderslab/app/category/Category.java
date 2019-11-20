@@ -17,6 +17,7 @@ public class Category {
     @Size(min = 3, max = 10)
     @NotEmpty
     String name;
+    int picsQty = 0;
     @OneToMany(mappedBy = "category")
     List<Picture> pictures;
 }
