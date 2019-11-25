@@ -74,7 +74,6 @@ public class PictureController {
             e.printStackTrace();
         }
         return "redirect:add";
-
     }
 
     @GetMapping(value = "/read/{id}")

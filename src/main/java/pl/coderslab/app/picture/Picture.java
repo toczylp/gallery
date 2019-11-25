@@ -13,6 +13,7 @@ import pl.coderslab.app.user.User;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
@@ -28,6 +29,7 @@ public class Picture {
 
     @Lob
     @NotEmpty
+    @Size
     private byte[] pic;
 
     public User getUser() {

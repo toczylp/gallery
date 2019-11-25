@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    public void update2(User user) throws UserNotFoundException {
+    public void updateUser(User user) throws UserNotFoundException {
         User userDB = userRepository.findById(user.getId()).orElseThrow(UserNotFoundException::new);
         userDB.setFirstName(user.getFirstName());
         userDB.setLastName(user.getLastName());

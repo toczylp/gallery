@@ -30,8 +30,7 @@
                                         <div class="panel-body">
                                             <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
                                             <p>Upload date: ${pictures[i].getCreated()}</p>
-                                            <p>Rank: <span class="badge badge-info">${pictures[i].getRating()}</span>Views: <span class="badge badge-info">${pictures[i].getDirectDisplayQty()}</span></p>
-                                            <p><c:if test="${paginationFlag == '3'}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
+                                            <p>Rank: <span class="badge badge-info">${pictures[i].getRating()}</span>Views: <span class="badge badge-info">${pictures[i].getDirectDisplayQty()}</span><c:if test="${paginationFlag == '3'}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></>
                                         </div>
                                 </div>
                             </c:forEach>
@@ -46,8 +45,7 @@
                             <div class="panel-body">
                                 <p>Uploaded by: ${pictures[i].getUser().getLogin()}</p>
                                 <p>Upload date: ${pictures[i].getCreated()}</p>
-                                <p>Rank: <span class="badge badge-info">${pictures[i].getRating()}</span>Views: <span class="badge badge-info">${pictures[i].getDirectDisplayQty()}</span></p>
-                                <p><c:if test="${paginationFlag == '3'}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
+                                <p>Rank: <span class="badge badge-info">${pictures[i].getRating()}</span>Views: <span class="badge badge-info">${pictures[i].getDirectDisplayQty()}</span></p><p><c:if test="${paginationFlag == '3'}"><span id="deleteBtn"><a href="../../../../../picture/delete/${pictures[i].getId()}"><button class="btn btn-danger">DELETE</button></a></span></c:if></p>
                             </div>
                         </div>
                     </c:forEach>

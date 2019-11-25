@@ -7,9 +7,10 @@ public interface UserService {
 
     User findByUserName(String name);
     void saveUser(User user);
-     void update2(User user) throws UserNotFoundException;
-     void deleteByUserId(Long id);
+    void updateUser(User user) throws UserNotFoundException;
+    void deleteByUserId(Long id);
     User findByLogin(String login) throws UserNotFoundException;
+    //using optional
     Optional<User> findByMail(String mail);
     List<User> findAll();
 }

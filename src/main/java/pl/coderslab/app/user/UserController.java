@@ -65,7 +65,7 @@ public class UserController {
     public String userUpdate(@ModelAttribute @Valid User user) {
 
         try {
-            userServiceImpl.update2(user);
+            userServiceImpl.updateUser(user);
         } catch (UserNotFoundException e) {
             e.printStackTrace();
         }

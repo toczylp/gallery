@@ -118,7 +118,8 @@ local.properties
 .buildpath
 
 # sbteclipse plugin
-.target
+/target/*
+*.iml
 
 # Tern plugin
 .tern-project
@@ -247,5 +248,4 @@ target/
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-
 # End of https://www.gitignore.io/api/linux,java-web,intellij
