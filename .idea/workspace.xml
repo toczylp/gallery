@@ -6,12 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f03ccd7e-bea3-4844-8dcd-15349bb41b90" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pl/coderslab/app/picture/PictureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/coderslab/app/picture/PictureController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/picture/PictureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/gallery-1.0-SNAPSHOT/WEB-INF/classes/pl/coderslab/app/picture/PictureController.class" afterDir="false" />
-    </list>
+    <list default="true" id="f03ccd7e-bea3-4844-8dcd-15349bb41b90" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,7 +324,7 @@
       <workItem from="1573851298407" duration="24428000" />
       <workItem from="1574105924146" duration="48769000" />
       <workItem from="1574374346743" duration="9186000" />
-      <workItem from="1574708717014" duration="2192000" />
+      <workItem from="1574708717014" duration="2414000" />
     </task>
     <servers />
   </component>
@@ -365,21 +360,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java</url>
           <line>51</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java</url>
-          <line>224</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java</url>
-          <line>227</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/coderslab/app/picture/PictureController.java</url>
-          <line>225</line>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
