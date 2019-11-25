@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.ModelAndView;
 import pl.coderslab.app.category.Category;
 import pl.coderslab.app.category.CategoryService;
 import pl.coderslab.app.comment.Comment;
@@ -15,6 +18,7 @@ import pl.coderslab.app.comment.CommentService;
 import pl.coderslab.app.user.UserNotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
@@ -26,7 +30,7 @@ import java.util.Map;
 @Controller
 @Secured("ROLE_ADMIN")
 @RequestMapping("/picture")
-public class PictureController {
+public class PictureController implements HandlerExceptionResolver {
 
     private final PictureService pictureService;
     private final CommentService commentService;
@@ -34,7 +38,6 @@ public class PictureController {
     private final Map<String, String> ALLOWED_PICUTRES_TYPE_BY_TWO_FIRST_BYTES = Map.of(
             "JPEG", "ffd8", "PNG", "8950", "BMP", "424d", "TIFF", "4949"
     );
-    private final String PUBLIC_FLAG = "publicFlag";
 
     @GetMapping("/add")
     public String addPictureForm(Model model) {
@@ -212,5 +215,18 @@ public class PictureController {
     @ModelAttribute(name = "categories")
     public List<Category> categories() {
         return categoryService.readAllCategories();
+    }
+
+    @Override
+    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
+
+        ModelAndView view = new ModelAndView();
+
+        if (e instanceof MaxUploadSizeExceededException) {
+            view.setViewName("redirect:/picture/add");
+            return view;
+        }
+
+        return null;
     }
 }
